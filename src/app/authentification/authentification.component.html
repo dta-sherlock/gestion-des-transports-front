@@ -4,23 +4,18 @@
       <label for="login" class="col-3 text-right">Email</label>
       <input type="text" [formControl]="mailCtrl" [(ngModel)]="user.email" class="col-9" placeholder="Nom d'utilisateur" required>
     </div>
-    <div *ngIf="passwordCtrl.dirty && passwordCtrl.hasError('required')" class="invalid-feedback">
-      Le mail est obligatoire.
-    </div>
-    <div *ngIf="passwordCtrl.dirty && passwordCtrl.hasError('email')" class="invalid-feedback">
-      Le mail est invalide.
-    </div>
 
     <div class="form-group row">
       <label for="password" class="col-3 text-right">Mot de passe</label>
       <input type="password" [formControl]="passwordCtrl" [(ngModel)]="user.password" class="col-9" placeholder="password" required>
     </div>
-    <div *ngIf="passwordCtrl.dirty && passwordCtrl.hasError('required')" class="invalid-feedback">
-      Le mot de passe est obligatoire.
-    </div>
 
     <div class="form-group row">
       <button type="button" [disabled]="formConnexion.invalid" class="btn btn-success ml-auto">Se connecter</button>
+    </div>
+
+    <div class="invalid-feedback">
+      Vos informations d'authentification sont invalides
     </div>
   </form>
 </div>

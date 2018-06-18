@@ -18,6 +18,11 @@ export class AuthentificationComponent implements OnInit {
   constructor(fb: FormBuilder) {
     this.mailCtrl = fb.control('', [Validators.email, Validators.required]);
     this.passwordCtrl = fb.control('', [Validators.required]);
+
+    this.formConnexion = fb.group({
+      email: this.mailCtrl,
+      password: this.passwordCtrl
+    })
   }
 
   ngOnInit() {
