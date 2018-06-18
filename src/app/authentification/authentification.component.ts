@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { User } from '../models/user/User';
 
 @Component({
@@ -8,9 +9,16 @@ import { User } from '../models/user/User';
 })
 export class AuthentificationComponent implements OnInit {
 
+  mailCtrl: FormControl;
+  passwordCtrl: FormControl;
+  formConnexion: FormGroup;
+
   user: User = new User("", "");
-  
-  constructor() { }
+
+  constructor(fb: FormBuilder) {
+    this.mailCtrl = fb.control('', [Validators.email, Validators.required]);
+    this.passwordCtrl = fb.control('', [Validators.required]);
+  }
 
   ngOnInit() {
   }
