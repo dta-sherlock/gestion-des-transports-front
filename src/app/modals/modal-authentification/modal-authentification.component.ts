@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./modal-authentification.component.css']
 })
 export class ModalAuthentificationComponent implements OnInit {
+  display = 'none';
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  openModal() {
+    this.display = 'block';
+  }
+
+  closeModal() {
+    this.display = 'none';
+  }
 }
