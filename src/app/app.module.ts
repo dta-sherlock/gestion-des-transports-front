@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ModalAuthentificationComponent } from './modal-authentification/modal-authentification.component';
+import { ModalAuthentificationComponent } from './modals/modal-authentification/modal-authentification.component';
 
 
 @NgModule({
