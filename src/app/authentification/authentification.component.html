@@ -2,7 +2,7 @@
   <form (ngSubmit)="handleConnexion()" [formGroup]="formConnexion">
     <div class="form-group row">
       <label for="login" class="col-3 text-right">Email</label>
-      <input type="text" [formControl]="mailCtrl" [(ngModel)]="user.email" class="col-9" placeholder="Nom d'utilisateur" required>
+      <input type="text" [formControl]="emailCtrl" [(ngModel)]="user.email" class="col-9" placeholder="Nom d'utilisateur" required>
     </div>
 
     <div class="form-group row">
@@ -11,7 +11,7 @@
     </div>
 
     <div class="form-group row">
-      <button type="button" [disabled]="formConnexion.invalid" class="btn btn-success ml-auto">Se connecter</button>
+      <button type="submit" [disabled]="formConnexion.invalid" class="btn btn-success ml-auto">Se connecter</button>
     </div>
 
     <div class="invalid-feedback">

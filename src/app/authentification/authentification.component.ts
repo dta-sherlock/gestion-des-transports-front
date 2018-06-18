@@ -9,18 +9,18 @@ import { User } from '../models/user/User';
 })
 export class AuthentificationComponent implements OnInit {
 
-  mailCtrl: FormControl;
+  emailCtrl: FormControl;
   passwordCtrl: FormControl;
   formConnexion: FormGroup;
 
   user: User = new User("", "");
 
   constructor(fb: FormBuilder) {
-    this.mailCtrl = fb.control('', [Validators.email, Validators.required]);
+    this.emailCtrl = fb.control('', [Validators.email, Validators.required]);
     this.passwordCtrl = fb.control('', [Validators.required]);
 
     this.formConnexion = fb.group({
-      email: this.mailCtrl,
+      mail: this.emailCtrl,
       password: this.passwordCtrl
     })
   }
@@ -28,4 +28,7 @@ export class AuthentificationComponent implements OnInit {
   ngOnInit() {
   }
 
+  handleConnexion(){
+    console.log(this.user);
+  }
 }
