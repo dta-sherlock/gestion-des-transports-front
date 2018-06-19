@@ -1,0 +1,8 @@
+.image-container {
+  height: 125px
+}
+
+img {
+  object-fit: cover;
+  padding: 15px;
+}

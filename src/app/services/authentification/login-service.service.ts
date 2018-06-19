@@ -1,17 +1,23 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../models/user/User';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { API_BASE_URL, URL_LOGIN } from '../../constantes/urls';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Authorization': 'my-auth-token'
+  })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginServiceService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   sendUser(user: User): Promise<User> {
-    console.log("send user");
-    return new Promise(resolve => {
-      setTimeout(() => resolve(new User(user.email, user.password, "ADMIN")), 1000);
-    });
+    return this.http.post<User>(`${API_BASE_URL}${URL_LOGIN}`, user, httpOptions).toPromise();
   }
 }

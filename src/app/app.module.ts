@@ -7,16 +7,20 @@ import { AuthentificationComponent } from './authentification/authentification.c
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalAuthentificationComponent } from './modals/modal-authentification/modal-authentification.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
+import { OptionComponent } from './modals/modal-authentification/option/option.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthentificationComponent,
-    ModalAuthentificationComponent
+    ModalAuthentificationComponent,
+    OptionComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule.forRoot()

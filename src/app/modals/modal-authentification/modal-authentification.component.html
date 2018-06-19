@@ -9,27 +9,12 @@
   </div>
   <div class="modal-body">
     <div class="row">
-      <div class="col-4 option-container">
-        <div class="row image-container">
-          <img src="../../../assets/images/icones_modal_auth/collab.png" class="mx-auto d-block">
-        </div>
-        <h5 class="text-center">Collaborateur</h5>
-      </div>
-      <div class="col-4 option-container">
-        <div class="row image-container">
-          <img src="../../../assets/images/icones_modal_auth/chauffeur.png" class="mx-auto d-block">
-        </div>
-        <h5 class="text-center">Chauffeur</h5>
-      </div>
-      <div class="col-4 option-container">
-        <div class="row image-container">
-          <img src="../../../assets/images/icones_modal_auth/admin.png" class="mx-auto d-block">
-        </div>
-        <h5 class="text-center">Administrateur</h5>
-      </div>
+      <app-option [nomImage]="'collab.png'" [type]="'Collaborateur'" class="col-4"></app-option>
+      <app-option [nomImage]="'chauffeur.png'" [type]="'Chauffeur'" class="col-4" *ngIf="displayDriverOption"></app-option>
+      <app-option [nomImage]="'admin.png'" [type]="'Administrateur'" class="col-4" *ngIf="displayAdminOption"></app-option>
     </div>
   </div>
-  <div class="modal-footer">
+  <div class=" modal-footer ">
 
   </div>
 </ng-template>

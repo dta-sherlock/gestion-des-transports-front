@@ -11,6 +11,9 @@ import { User } from '../../models/user/User';
 export class ModalAuthentificationComponent implements OnInit {
   closeResult: string;
 
+  displayDriverOption: boolean = false;
+  displayAdminOption: boolean = false;
+
   @Input()
   user: User;
 
@@ -30,9 +33,15 @@ export class ModalAuthentificationComponent implements OnInit {
     if (u.currentValue != null) {
       let user = u.currentValue
       this.loginService.sendUser(user).then(data => {
-        if (data.userType == "ADMIN") {
-          this.openModal(this.modalContent);
+        if (data.userType == "ADMIN" || data.userType == "CHAUFFEUR") {
+          this.displayDriverOption = true;
         }
+
+        if (data.userType == "ADMIN") {
+          this.displayAdminOption = true;
+        }
+
+        this.openModal(this.modalContent);
       });
     }
   }
