@@ -1,43 +1,35 @@
-<button type="button" class="btn btn-info btn-lg" (click)="openModal()">Ouvrir le modal</button>
+<button type="button" class="btn btn-info btn-lg" (click)="openModal(content)">Ouvrir le modal</button>
 
-<div class="backdrop" [ngStyle]="{'display':display}"></div>
-
-<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-
-        <h4 class="modal-title pull-left">Choisissez votre profil</h4>
-        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-4 option-container">
-            <div class="row image-container">
-              <img src="../../../assets/images/icones_modal_auth/collab.png" class="mx-auto d-block">
-            </div>
-            <h5 class="text-center">Collaborateur</h5>
-          </div>
-          <div class="col-4 option-container">
-            <div class="row image-container">
-              <img src="../../../assets/images/icones_modal_auth/chauffeur.png" class="mx-auto d-block">
-            </div>
-            <h5 class="text-center">Chauffeur</h5>
-          </div>
-          <div class="col-4 option-container">
-            <div class="row image-container">
-              <img src="../../../assets/images/icones_modal_auth/admin.png" class="mx-auto d-block">
-            </div>
-            <h5 class="text-center">Administrateur</h5>
-          </div>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Choisissez votre profil</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-4 option-container">
+        <div class="row image-container">
+          <img src="../../../assets/images/icones_modal_auth/collab.png" class="mx-auto d-block">
         </div>
+        <h5 class="text-center">Collaborateur</h5>
       </div>
-
-      <div class="modal-footer">
-
+      <div class="col-4 option-container">
+        <div class="row image-container">
+          <img src="../../../assets/images/icones_modal_auth/chauffeur.png" class="mx-auto d-block">
+        </div>
+        <h5 class="text-center">Chauffeur</h5>
+      </div>
+      <div class="col-4 option-container">
+        <div class="row image-container">
+          <img src="../../../assets/images/icones_modal_auth/admin.png" class="mx-auto d-block">
+        </div>
+        <h5 class="text-center">Administrateur</h5>
       </div>
     </div>
   </div>
-</div>
+  <div class="modal-footer">
+
+  </div>
+</ng-template>

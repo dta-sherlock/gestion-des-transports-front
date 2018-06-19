@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-modal-authentification',
@@ -6,18 +7,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./modal-authentification.component.css']
 })
 export class ModalAuthentificationComponent implements OnInit {
-  display = 'none';
+  //display = 'none';
+  closeResult: string;
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
   }
 
-  openModal() {
-    this.display = 'block';
+  openModal(content) {
+    //this.display = 'block';
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
 
-  closeModal() {
-    this.display = 'none';
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
-}
+    closeModal() {
+      //this.display = 'none';
+    }
+  }
