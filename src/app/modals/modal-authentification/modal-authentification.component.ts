@@ -7,7 +7,6 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./modal-authentification.component.css']
 })
 export class ModalAuthentificationComponent implements OnInit {
-  //display = 'none';
   closeResult: string;
 
   constructor(private modalService: NgbModal) { }
@@ -16,7 +15,6 @@ export class ModalAuthentificationComponent implements OnInit {
   }
 
   openModal(content) {
-    //this.display = 'block';
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -33,7 +31,4 @@ export class ModalAuthentificationComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-    closeModal() {
-      //this.display = 'none';
-    }
-  }
+}
