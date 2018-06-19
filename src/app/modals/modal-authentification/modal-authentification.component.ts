@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as $ from 'jquery'
 
 @Component({
   selector: 'app-modal-authentification',
@@ -11,6 +12,7 @@ export class ModalAuthentificationComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    $('#myModal').modal("show")
   }
 
   openModal() {
