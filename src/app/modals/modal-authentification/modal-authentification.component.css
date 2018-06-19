@@ -10,3 +10,16 @@
 h1 {
   margin: 0 auto;
 }
+
+.image-container {
+  height: 125px
+}
+
+.option-container {
+  
+}
+
+img {
+  object-fit: cover;
+  padding: 15px;
+}
