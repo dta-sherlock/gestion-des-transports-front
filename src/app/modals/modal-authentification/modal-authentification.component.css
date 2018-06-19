@@ -15,6 +15,10 @@ h1 {
   height: 125px
 }
 
+.option-container {
+  
+}
+
 img {
   object-fit: cover;
   padding: 15px;
