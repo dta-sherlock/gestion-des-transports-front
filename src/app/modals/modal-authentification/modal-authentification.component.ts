@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, SimpleChanges } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { LoginServiceService } from '../../services/authentification/login-service.service';
+import { User } from '../../models/user/User';
 
 @Component({
   selector: 'app-modal-authentification',
@@ -9,9 +11,30 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 export class ModalAuthentificationComponent implements OnInit {
   closeResult: string;
 
-  constructor(private modalService: NgbModal) { }
+  @Input()
+  user: User;
+
+  //Récupère le contenu de la variable template content
+  @ViewChild('content')
+  modalContent: ElementRef;
+
+  constructor(private modalService: NgbModal, private loginService: LoginServiceService) { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(change: SimpleChanges) {
+    const u = change['user'];
+
+    //Si on a déjà envoyé un user
+    if (u.currentValue != null) {
+      let user = u.currentValue
+      this.loginService.sendUser(user).then(data => {
+        if (data.userType == "ADMIN") {
+          this.openModal(this.modalContent);
+        }
+      });
+    }
   }
 
   openModal(content) {
