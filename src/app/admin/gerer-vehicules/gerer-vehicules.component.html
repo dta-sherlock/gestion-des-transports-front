@@ -12,13 +12,13 @@
     <div class="form-group row">
       <label for="immatFilter" class="col-sm-2 col-form-label">Immatriculation</label>
       <div class="col-sm-2">
-        <input type="text" class="form-control" id="immatFilter" #immatFilter (change)="this.adminService.setImmatFilter(immatFilter)">
+        <input type="text" class="form-control" id="immatFilter" #immatFilter placeholder="Entrez une immatriculation">
       </div>
     </div>
     <div class="form-group row">
       <label for="brandFilter" class="col-sm-2 col-form-label">Marque</label>
       <div class="col-sm-2">
-        <input type="text" class="form-control" id="brandFilter" #brandFilter (change)="this.adminService.setBrandFilter(BrandFilter)">
+        <input type="text" class="form-control" id="brandFilter" #brandFilter placeholder="Entrez une marque">
       </div>
       <div class="col">
         <a class="btn btn-primary" id="boutonAjout" (click)="addVehicule()">Ajouter un véhicule</a>

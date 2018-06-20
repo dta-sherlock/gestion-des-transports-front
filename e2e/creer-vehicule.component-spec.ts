@@ -1,23 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import {browser, by, element} from 'protractor';
 import { CreerVehiculeComponent } from '../src/app/admin/creer-vehicule/creer-vehicule.component';
 
 describe('CreerVehiculeComponent', () => {
-  let component: CreerVehiculeComponent;
-  let fixture: ComponentFixture<CreerVehiculeComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CreerVehiculeComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CreerVehiculeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
   it('Modal should be open', () => {
     browser.get('http://localhost:4200/').then(function () {
@@ -51,4 +35,5 @@ describe('CreerVehiculeComponent', () => {
       expect(immatriculation.getAttribute('class')).toContain('ng-valid');
     });
   });
+
 });

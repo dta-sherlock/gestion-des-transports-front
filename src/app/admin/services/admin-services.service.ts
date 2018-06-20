@@ -26,20 +26,5 @@ export class AdminServices {
     return this.http.post<Array<Vehicules>>(`${API_BASE_URL}${URL_VEHICULES}${CREER}`, vehicule);
   }
 
-  setImmatFilter(value){
-   //return this.immatFilter.
-  }
-
-  setBrandFilter(value){
-   // return this.brandFilter(value);
-  }
-
-  getBrandFilter() {
-   // return this.brandFilter.
-  }
-
-  getImmatFilter() {
-   // return this.immatFilter.
-  }
 
 }
