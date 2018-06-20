@@ -27,7 +27,7 @@
 
     <div class="row">
 
-      <div class="card" style="width: 10rem; margin: 5px" *ngFor="let vehicule of listeVehicules">
+      <div class="card" style="width: 10rem; margin: 5px" *ngFor="let vehicule of listeVehicules | async | immatFilter : immatFilter | brandFilter: brandFilter">
         <a>
           <img class="card-img-top" src="{{vehicule.photo}}">
         </a>

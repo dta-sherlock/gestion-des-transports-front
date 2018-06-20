@@ -14,8 +14,6 @@ import {CommonModalComponent} from "../../modals/common-modal/common-modal.compo
 })
 export class GererVehiculesComponent implements OnInit {
 
-
-
   listeVehicules : Array<Vehicules>;
 
   immatFilter = '';
@@ -28,8 +26,6 @@ export class GererVehiculesComponent implements OnInit {
 
   ngOnInit() {
       this.adminService.getVehicules().subscribe(liste => (this.listeVehicules = liste));
-   // this.adminService.getImmatFilter().subscribe(immatriculation => (this.immatFilter = immatriculation));
-   // this.adminService.getBrandFilter().subscribe(brand => (this.brandFilter = brand));
   }
 
   addVehicule(){

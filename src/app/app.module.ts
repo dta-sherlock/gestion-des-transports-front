@@ -12,6 +12,9 @@ import { CommonModalComponent } from './modals/common-modal/common-modal.compone
 import { ModalModule } from 'ngx-bootstrap';
 import {GererVehiculesComponent} from "./admin/gerer-vehicules/gerer-vehicules.component";
 import {CreerVehiculeComponent} from "./admin/creer-vehicule/creer-vehicule.component";
+import { FilterPipe} from './filter.pipe';
+import { ImmatFilterPipe } from './pipes/immat-filter.pipe';
+import { BrandFilterPipe } from './pipes/brand-filter.pipe';
 
 
 @NgModule({
@@ -21,14 +24,17 @@ import {CreerVehiculeComponent} from "./admin/creer-vehicule/creer-vehicule.comp
     OptionProfilComponent,
     CommonModalComponent,
     GererVehiculesComponent,
-    CreerVehiculeComponent
+    CreerVehiculeComponent,
+    FilterPipe,
+    ImmatFilterPipe,
+    BrandFilterPipe
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
   ],
   providers: [
 

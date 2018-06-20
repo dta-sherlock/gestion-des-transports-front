@@ -12,9 +12,6 @@ const CREER: string = 'creer/'
 })
 export class AdminServices {
 
-  immatFilter: Observable<string> = new Observable<string>();
-  brandFilter: Observable<string> = new Observable<string>();
-
   constructor(private http : HttpClient) {
   }
 
@@ -25,6 +22,5 @@ export class AdminServices {
   publishVehicule(vehicule : Vehicules){
     return this.http.post<Array<Vehicules>>(`${API_BASE_URL}${URL_VEHICULES}${CREER}`, vehicule);
   }
-
 
 }
