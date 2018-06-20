@@ -26,4 +26,17 @@
     </div>
   </form>
 </div>
-<app-modal-authentification [user]="userLog"></app-modal-authentification>
+
+<!--Modal-->
+<app-common-modal #childModal [title]="'Choisissez votre profil'">
+  <div class="modal-body">
+    <div class="row">
+      <app-option-profil [nomImage]="'collab.png'" [type]="'Collaborateur'" class="col-4"></app-option-profil>
+      <app-option-profil [nomImage]="'chauffeur.png'" [type]="'Chauffeur'" class="col-4" *ngIf="isDriver"></app-option-profil>
+      <app-option-profil [nomImage]="'admin.png'" [type]="'Administrateur'" class="col-4" *ngIf="isAdmin"></app-option-profil>
+    </div>
+  </div>
+  <div class=" modal-footer ">
+
+  </div>
+</app-common-modal>
