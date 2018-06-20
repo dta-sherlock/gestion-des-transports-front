@@ -1,20 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="navbar-brand">
-    <img height="50" width="50"  src="../../assets/images/logo_transport_route.png">
-  </div>
-    <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="./collaborateur/reservations">Vos réservations</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./collaborateur/annonces">Vos annonces</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="./collaborateur/statistiques">Statisques</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+
+
+<div [ngSwitch]="profil" >
+  <div *ngSwitchCase="0" > <app-menu-collab ></app-menu-collab> </div>
+  <div *ngSwitchCase="1" > <app-menu-chauffeur ></app-menu-chauffeur> </div>
+  <div *ngSwitchCase="2" > <app-menu-admin ></app-menu-admin> </div>
+</div>
 
 

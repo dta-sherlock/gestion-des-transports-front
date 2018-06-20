@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 
 @Component({
@@ -7,8 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent implements OnInit {
+  @Input() private _profil: {name: number};
 
-  constructor() { }
+  constructor() {
+    }
+  get profil(): { name: number } {
+    return this._profil;
+  }
+
+  set profil(value: { name: number }) {
+    this._profil = value;
+  }
 
   ngOnInit() {
   }
