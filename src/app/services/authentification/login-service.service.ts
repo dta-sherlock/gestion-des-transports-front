@@ -18,8 +18,8 @@ export class LoginServiceService {
   constructor(private http: HttpClient) { }
 
   sendUser(user: User): Promise<User> {
-    return this.http.post<User>(`${API_BASE_URL}${URL_LOGIN}`, user, httpOptions).toPromise(); /*new Promise(resolve => {
+    return /*this.http.post<User>(`${API_BASE_URL}${URL_LOGIN}`, user, httpOptions).toPromise();*/ new Promise(resolve => {
       setTimeout(() => resolve(new User(user.email, user.password, "ADMIN")), 1000);
-    });*/
+    });
   }
 }
