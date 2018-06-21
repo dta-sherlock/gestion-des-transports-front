@@ -10,6 +10,14 @@ import { AuthErrorInterceptorService } from './interceptors/authentification/aut
 import { OptionProfilComponent } from './modals/option-profil/option-profil.component';
 import { CommonModalComponent } from './modals/common-modal/common-modal.component';
 import { ModalModule } from 'ngx-bootstrap';
+import { CollabAccueilComponent } from './collab-accueil/collab-accueil.component';
+import { AdminAccueilComponent } from './admin-accueil/admin-accueil.component';
+import { ChauffeurAccueilComponent } from './chauffeur-accueil/chauffeur-accueil.component';
+import {MenuAdminComponent} from './menu-admin/menu-admin.component';
+import {MenuChauffeurComponent} from './menu-chauffeur/menu-chauffeur.component';
+import {MenuCollabComponent} from './menu-collab/menu-collab.component';
+import {RouterModule} from '@angular/router';
+import {ROUTES} from './app.routes';
 
 
 @NgModule({
@@ -17,14 +25,22 @@ import { ModalModule } from 'ngx-bootstrap';
     AppComponent,
     AuthentificationComponent,
     OptionProfilComponent,
-    CommonModalComponent
+    CommonModalComponent,
+    CollabAccueilComponent,
+    AdminAccueilComponent,
+    ChauffeurAccueilComponent,
+    MenuAdminComponent,
+    MenuChauffeurComponent,
+    MenuCollabComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    RouterModule.forRoot(ROUTES)
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthErrorInterceptorService, multi: true }
