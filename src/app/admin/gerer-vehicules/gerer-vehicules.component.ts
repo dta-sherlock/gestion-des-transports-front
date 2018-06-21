@@ -1,5 +1,5 @@
 import {Component, OnInit,  ViewChild, ViewContainerRef} from '@angular/core';
-import Vehicules from "../../models/vehicules/vehicules";
+import Vehicules, {CarCategory} from "../../models/vehicules/vehicules";
 import {CreerVehiculeComponent} from "../creer-vehicule/creer-vehicule.component";
 import {AdminServices} from "../services/admin-services.service";
 import {CommonModalComponent} from "../../modals/common-modal/common-modal.component";
@@ -14,10 +14,13 @@ import {CommonModalComponent} from "../../modals/common-modal/common-modal.compo
 })
 export class GererVehiculesComponent implements OnInit {
 
-  listeVehicules : Array<Vehicules>;
+  immatFilter : string = '';
 
-  immatFilter = '';
-  brandFilter = '';
+  brandFilter : string = '';
+
+  listeVehicules : Array<Vehicules> = [
+    new Vehicules('XX-123-XX', 'Peugeot', '206', CarCategory.BerlinesTailleS, 5, "../assets/logo_transport_route.png" )
+  ];
 
   @ViewChild('childModal') childModal: CommonModalComponent;
   @ViewChild(CreerVehiculeComponent) creerComponent:CreerVehiculeComponent;
@@ -31,5 +34,4 @@ export class GererVehiculesComponent implements OnInit {
   addVehicule(){
     this.childModal.show();
   }
-
 }

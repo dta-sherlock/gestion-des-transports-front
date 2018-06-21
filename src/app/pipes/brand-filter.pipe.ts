@@ -2,15 +2,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 import Vehicules from "../models/vehicules/vehicules";
 
 @Pipe({
-  name: 'brandFilter'
+  name: 'FilterByBrand'
 })
 export class BrandFilterPipe implements PipeTransform {
 
-  transform(value: Array<Vehicules>, args?: string): any {
-    if (!args) {
-      return value;
+  transform(value: Array<Vehicules>, brandFilter: string): any [] {
+    if (brandFilter) {
+      return value.filter(vehicule => vehicule.brand.toLowerCase().startsWith(brandFilter.toLowerCase()));
     } else {
-      return value.filter(vehicule => vehicule.brand.toLowerCase().includes(args.toLowerCase()));
+      return value;
     }
   }
 }
