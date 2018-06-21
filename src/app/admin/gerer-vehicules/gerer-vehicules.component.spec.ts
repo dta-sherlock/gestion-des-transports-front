@@ -1,7 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {browser} from 'protractor';
 
-import { GererVehiculesComponent } from '../src/app/admin/gerer-vehicules/gerer-vehicules.component';
+import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {async} from "@angular/core/testing";
+import { GererVehiculesComponent } from './gerer-vehicules.component';
 
 describe('GererVehiculesComponent', () => {
   let component: GererVehiculesComponent;

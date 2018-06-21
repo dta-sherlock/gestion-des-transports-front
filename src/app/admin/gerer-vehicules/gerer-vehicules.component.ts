@@ -19,13 +19,13 @@ export class GererVehiculesComponent implements OnInit {
   brandFilter : string = '';
 
   listeVehicules : Array<Vehicules> = [
-    new Vehicules('XX-123-XX', 'Peugeot', '206', CarCategory.BerlinesTailleS, 5, "../assets/logo_transport_route.png" )
+    new Vehicules('XX-123-XX', 'Peugeot', '206', CarCategory.BerlinesTailleS, 5, "../assets/images/logo_transport_route.png" )
   ];
 
   @ViewChild('childModal') childModal: CommonModalComponent;
   @ViewChild(CreerVehiculeComponent) creerComponent:CreerVehiculeComponent;
 
-  constructor(private adminService : AdminServices, private viewContainerRef: ViewContainerRef) { }
+  constructor(private adminService : AdminServices) { }
 
   ngOnInit() {
       this.adminService.getVehicules().subscribe(liste => (this.listeVehicules = liste));
