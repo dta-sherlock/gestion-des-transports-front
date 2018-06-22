@@ -16,15 +16,15 @@ import {AdminServices} from "../services/admin-services.service";
 export class CreerVehiculeComponent implements OnInit {
 
   category = CarCategory;
-  afficherCategories() : Array<string> {
+
+  afficherCategories(): Array<string> {
     var keys = Object.keys(this.category);
     return keys;
   }
 
   constructor(
-    private fb: FormBuilder, private adminService : AdminServices
-  )
-  {
+    private fb: FormBuilder, private adminService: AdminServices
+  ) {
     this.creationForm = this.fb.group({
       immatriculation: [
         '',
@@ -36,7 +36,7 @@ export class CreerVehiculeComponent implements OnInit {
       brand: ['', Validators.required],
       model: ['', Validators.required],
       carCategory: ['', Validators.required],
-      placeAvailable : ['', Validators.required],
+      placeAvailable: ['', Validators.required],
       photo: ['', Validators.required]
     });
   }
@@ -47,6 +47,7 @@ export class CreerVehiculeComponent implements OnInit {
   get immatriculation() {
     return this.creationForm.get('immatriculation');
   }
+
   get brand() {
     return this.creationForm.get('brand');
   }
@@ -71,7 +72,7 @@ export class CreerVehiculeComponent implements OnInit {
 
   }
 
-    createVehicule() {
+  createVehicule() {
     const newVehicule = new Vehicules(
       this.immatriculation.value,
       this.brand.value,

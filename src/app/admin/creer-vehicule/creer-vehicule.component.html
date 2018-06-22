@@ -30,10 +30,10 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="carCategory" class="col-sm-3 col-form-label">Catégorie</label>
+      <label for="category" class="col-sm-3 col-form-label">Catégorie</label>
       <div class="col-sm-9">
-        <select class="form-control" id="carCategory" name="carCategory" formControlName="carCategory">
-          <option *ngFor="let item of afficherCategories()">{{item}}</option>
+        <select class="form-control" id="category" name="category" formControlName="carCategory">
+          <option *ngFor="let item of afficherCategories()" value="{{item.valueOf()}}">{{item}}</option>
         </select>
         <div class="invalid-tooltip"[class.invalidClass]="carCategory.errors && (carCategory.dirty)">
           La catégorie est obligatoire
@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="carCategory" class="col-sm-3 col-form-label">Nombre de places</label>
+      <label for="placeAvailable" class="col-sm-3 col-form-label">Nombre de places</label>
       <div class="col-sm-9">
         <input type="text" class="form-control" id="placeAvailable" name="placeAvailable" formControlName="placeAvailable">
         <div class="invalid-tooltip"  [class.invalidClass]="placeAvailable.errors && (placeAvailable.dirty || placeAvailable.touched)">

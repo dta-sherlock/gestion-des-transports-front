@@ -18,9 +18,7 @@ export class GererVehiculesComponent implements OnInit {
 
   brandFilter : string = '';
 
-  listeVehicules : Array<Vehicules> = [
-    new Vehicules('XX-123-XX', 'Peugeot', '206', CarCategory.BerlinesTailleS, 5, "../assets/images/logo_transport_route.png" )
-  ];
+  listeVehicules : Array<Vehicules>;
 
   @ViewChild('childModal') childModal: CommonModalComponent;
   @ViewChild(CreerVehiculeComponent) creerComponent:CreerVehiculeComponent;
