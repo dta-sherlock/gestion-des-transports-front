@@ -36,7 +36,7 @@ export class AuthentificationComponent implements OnInit {
   }
 
   handleConnexion() {
-    this.loginService.login(this.userForm.email, this.userForm.password).subscribe(data => console.log(data));
+    this.loginService.login(this.userForm.email, this.userForm.password).then(data => console.log(data));
     /*this.userPromise.then(data => {
       console.log(data);
       if (data.userType == "1") {
