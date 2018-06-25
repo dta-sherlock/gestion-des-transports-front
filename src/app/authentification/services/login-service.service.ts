@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpEvent } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { User } from '../../models/user/User';
 import { API_BASE_URL, URL_LOGIN } from '../../constantes/urls';
@@ -16,14 +16,11 @@ export class LoginServiceService {
   }
 
   login(username: string, password: string): Observable<User> {
-    let credentials = {
-      username,
-      password
-    }
 
-    this.corsPreRequest().subscribe(data => console.log(data));
-    return this.http.post<User>(`${API_BASE_URL}${URL_LOGIN}`, credentials); /*new Promise(resolve => {
-      setTimeout(() => resolve(new User(user.email, user.password, "ADMIN")), 1000);
-    });*/
+    const body = new HttpParams()
+      .set('username', username)
+      .set('password', password);
+
+    return this.http.post<User>(`${API_BASE_URL}${URL_LOGIN}`, body);
   }
 }
