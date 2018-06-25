@@ -1,0 +1,117 @@
+<div class="container">
+
+  <h1>Publier une annonce</h1>
+  <form class="needs-validation" novalidate>
+    <div class="card">
+      <div class="card-header">
+        Itinéraire
+      </div>
+      <div class="card-body">
+        <div class="form-group row">
+          <label for="dep" class="col-sm-3 col-form-label">Adresse de départ</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="startAdress" name="origin" [(ngModel)]="origin" (selectItem)="selectedOrigin($event)"
+                   [ngbTypeahead]="search">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="arr" class="col-sm-3 col-form-label">Adresse d'arrivée</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="arr" name="destination" [(ngModel)]="destination" (selectItem)="selectedDestination($event)"
+                   [ngbTypeahead]="search">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="duration" class="col-sm-3 col-form-label">Durée du trajet</label>
+          <div class="col-sm-9">
+            <input type="text" readonly class="form-control-plaintext" id="duration" name="duration" [(ngModel)]="duration">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="distance" class="col-sm-3 col-form-label">Distance</label>
+          <div class="col-sm-9">
+            <input type="text" readonly class="form-control-plaintext" id="distance" name="distance" [(ngModel)]="distance">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" [formGroup]="vehiculeForm">
+      <div class="card-header">
+        Véhicule
+      </div>
+      <div class="card-body">
+        <div class="form-group row" [ngClass]="{
+          'has-danger': immatriculation.invalid && immatriculation.dirty,
+          'has-success': immatriculation.valid && immatriculation.dirty
+        }">
+          <label for="immat" class="col-sm-3 col-form-label">Immatriculation</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="immat" formControlName="immatriculation">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="marque" class="col-sm-3 col-form-label">Marque</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="marque" formControlName="marque">
+            <div class=" invalid-tooltip" *ngIf="marque.errors && (marque.dirty || marque.touched)">
+              La marque est obligatoire.
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="modele" class="col-sm-3 col-form-label">Modèle</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="modele" formControlName="modele">
+            <div class="invalid-tooltip" *ngIf="modele.errors && (modele.dirty || modele.touched)">
+              Le modèle est obligatoire.
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="dispo" class="col-sm-3 col-form-label">Places disponibles</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="dispo" formControlName="nbPlaces">
+            <div class="invalid-tooltip" *ngIf="nbPlaces.errors && (nbPlaces.dirty || nbPlaces.touched)">
+              Le nombre de places doit être compris entre 1 et 20.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card" [formGroup]="dateTimeForm">
+      <div class="card-header">
+        Date et heure
+      </div>
+      <div class="card-body">
+        <div class="form-group row">
+          <label for="date" class="col-sm-2 col-form-label align-self-center">Date</label>
+          <div class="col-sm-4 align-self-center">
+            <input id="date" required class="form-control" (click)="d.toggle()" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker"
+                   formControlName="date">
+          </div>
+          <label for="heure" class="col-sm-2 col-form-label align-self-center">Heure</label>
+          <div class="col-sm-4 align-self-center">
+            <ngb-timepicker required id="heure" [minuteStep]="10" formControlName="heure"></ngb-timepicker>
+          </div>
+          <div class="invalid-tooltip" *ngIf="(date.errors || heure.errors) && (heure.dirty || heure.touched || date.dirty || date.touched)">
+            La date et l'heure sont obligatoires.
+          </div>
+          <div class="invalid-tooltip" *ngIf="dateTimeForm.hasError('anterior')">
+            La date et l'heure ne peuvent être antérieure à aujourd'hui.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-footer text-center">
+      <button [disabled]="!validItineraire || dateTimeForm.invalid || vehiculeForm.invalid" class="btn
+              btn-primary" (click)="confirmAnnonce()">Publier</button>
+    </div>
+
+  </form>
+</div>
+
+<ng-template #actionConfirm>
+  <button type="submit" class="btn btn-primary" (click)="publish()">Publier</button>
+</ng-template>
