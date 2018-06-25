@@ -1,3 +1,159 @@
-<p>
-  reserver-covoiturage works!
-</p>
+<a href="#"> Retour à la liste</a>
+
+<h1>Réserver un véhicule</h1>
+
+
+<input type="search" id="address" class="form-control" placeholder="Where are we going?" />
+
+
+<div id="input-styling-address">
+  <input type="search" placeholder="Where are we going?" />
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/places.js@1.7.3"></script>
+
+
+<div class="container">
+  <!--Accordion wrapper-->
+  <div class="accordion" id="accordionEx">
+
+    <!-- Accordion card -->
+    <div class="card">
+
+      <!-- Card header -->
+      <div class="card-header" role="tab" id="headingOne">
+        <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne" aria-expanded="true"
+           aria-controls="collapseOne">
+          <h5 class="mb-0">
+            Covoiturage <i class="fa fa-angle-down rotate-icon"></i>
+          </h5>
+        </a>
+      </div>
+
+      <!-- Card body -->
+      <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne"
+           data-parent="#accordionEx">
+        <div class="card-body">
+
+        <h3>Critères</h3>
+        <form>
+          <div class="row">
+            <div class='col-sm-2'>
+
+                <label  > Adresse de départ*</label>
+            </div>
+            <div class='col-sm-2'>
+                <input id="searchInput" class="form-control" type="text">
+              <script>
+                var places = require('places.js');
+                var placesAutocomplete = places({
+                  container: document.querySelector('#searchInput')
+                });
+              </script>
+
+            </div>
+            <div class='col-sm-2'>
+
+                <label> Adresse de destination*</label>
+            </div>
+            <div class='col-sm-2'>
+                <input class="form-control" type="text">
+            </div>
+            <div class='col-sm-2'>
+                <label> Durée de trajet  h min </label>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class='col-sm-2'>
+
+                <label> Date de Départ </label>
+            </div>
+            <div class='col-sm-2'>
+                <input class="form-control" type="date">
+            </div>
+            <div class='col-sm-2 offset-sm-4'>
+                <label> Distance km </label>
+            </div>
+          </div>
+        </form>
+
+          <br>
+          <br>
+          <table class="table table-sm">
+
+            <tr>
+              <th>Date/Heure</th>
+              <th>Départ</th>
+              <th>Destination</th>
+              <th>Vehicule</th>
+              <th>Chauffeur</th>
+              <th>Place Disponible</th>
+              <th></th>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+      </div>
+    </div>
+    </div>
+      <!-- Accordion card end -->
+
+<!-- Accordion card -->
+<div class="card">
+
+  <!-- Card header -->
+  <div class="card-header" role="tab" id="headingTwo">
+    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo" aria-expanded="false"
+       aria-controls="collapseTwo">
+      <h5 class="mb-0">
+        Voiture de société <i class="fa fa-angle-down rotate-icon"></i>
+      </h5>
+    </a>
+  </div>
+
+  <!-- Card body -->
+  <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordionEx">
+    <div class="card-body">
+
+    </div>
+  </div>
+</div>
+<!-- Accordion card -->
+
+<!-- Accordion card -->
+<div class="card">
+
+  <!-- Card header -->
+  <div class="card-header" role="tab" id="headingThree">
+    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree"
+       aria-expanded="false" aria-controls="collapseThree">
+      <h5 class="mb-0">
+        Vehicule avec chauffeur privé<i class="fa fa-angle-down rotate-icon"></i>
+      </h5>
+    </a>
+  </div>
+
+  <!-- Card body -->
+  <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree"
+       data-parent="#accordionEx">
+    <div class="card-body">
+
+    </div>
+  </div>
+</div>
+
+</div>
+<!-- Accordion card -->
+
+</div>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+</script>

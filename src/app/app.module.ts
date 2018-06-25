@@ -4,6 +4,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { ReserverCovoiturageComponent } from './reserver-covoiturage/reserver-covoiturage.component';
+import {RouterModule} from '@angular/router';
+import {ROUTES} from './app.routes';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { ReserverCovoiturageComponent } from './reserver-covoiturage/reserver-co
   ],
   imports: [
     BrowserModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    RouterModule.forRoot(ROUTES),
+
   ],
   providers: [],
   bootstrap: [AppComponent]
