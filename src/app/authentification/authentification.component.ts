@@ -2,7 +2,7 @@ import { Component, OnInit, ViewContainerRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { User } from '../models/user/User';
 import { CommonModalComponent } from '../modals/common-modal/common-modal.component';
-import { LoginServiceService } from './services/authentification/login-service.service';
+import { LoginServiceService } from './services/login-service.service';
 
 @Component({
   selector: 'app-authentification',
