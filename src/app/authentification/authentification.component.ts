@@ -2,7 +2,7 @@ import { Component, OnInit, ViewContainerRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { User } from '../models/user/User';
 import { CommonModalComponent } from '../modals/common-modal/common-modal.component';
-import { LoginServiceService } from '../services/authentification/login-service.service';
+import { LoginServiceService } from './services/authentification/login-service.service';
 
 @Component({
   selector: 'app-authentification',
@@ -36,18 +36,19 @@ export class AuthentificationComponent implements OnInit {
   }
 
   handleConnexion() {
-    this.userPromise = this.loginService.sendUser(this.userForm);
-    this.userPromise.then(data => {
-      if (data.userType == "DRIVER") {
+    this.loginService.login(this.userForm.email, this.userForm.password).subscribe(data => console.log(data));
+    /*this.userPromise.then(data => {
+      console.log(data);
+      if (data.userType == "1") {
         this.isDriver = true;
       }
 
-      if (data.userType == "ADMIN") {
+      if (data.userType == "2") {
         this.isDriver = true;
         this.isAdmin = true;
       }
 
       this.childModal.show()
-    });
+    });*/
   }
 }

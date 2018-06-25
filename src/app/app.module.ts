@@ -6,10 +6,10 @@ import { AppComponent } from './app.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthErrorInterceptorService } from './interceptors/authentification/auth-error-interceptor.service';
 import { OptionProfilComponent } from './modals/option-profil/option-profil.component';
 import { CommonModalComponent } from './modals/common-modal/common-modal.component';
 import { ModalModule } from 'ngx-bootstrap';
+import { AuthErrorInterceptorService } from './authentification/interceptors/authentification/auth-error-interceptor.service';
 
 
 @NgModule({
@@ -27,7 +27,6 @@ import { ModalModule } from 'ngx-bootstrap';
     ModalModule.forRoot()
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthErrorInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })
