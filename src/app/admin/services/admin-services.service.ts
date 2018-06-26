@@ -15,7 +15,6 @@ export class AdminServices {
   constructor(private http : HttpClient) {
   }
 
-
   getVehicules() {
     return this.http.get<Array<Vehicules>>(`${API_BASE_URL}${URL_VEHICULES}`);
   }

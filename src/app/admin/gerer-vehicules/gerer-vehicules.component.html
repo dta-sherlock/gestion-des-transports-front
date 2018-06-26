@@ -34,7 +34,7 @@
         <div class="card-body" style="text-align:center">
           <p>{{vehicule.immatriculation}}
           <br> {{vehicule.brand}} {{vehicule.model}}
-          <br> {{vehicule.carCategory}}</p>
+          <br> {{vehicule.category}}</p>
         </div>
       </div>
 
@@ -43,12 +43,12 @@
   </div>
 </div>
 
-<app-common-modal #childModal [title]="'Ajouter un véhicule'">
+<app-common-modal #childModal [title]="'Ajouter un véhicule'" >
   <div class="modal-body">
-    <app-creer-vehicule></app-creer-vehicule>
+    <app-creer-vehicule (vehiculesSubmitted)="refreshList()"></app-creer-vehicule>
   </div>
   <div class=" modal-footer ">
-    <button type="button" class="btn btn-secondary" (click)="childModal.hide()">Annuler</button>
+    <button type="button" class="btn btn-secondary" (click)="this.childModal.hide()">Annuler</button>
     <button class="btn btn-primary" [disabled]="creerComponent.creationForm.invalid" (click)="creerComponent.createVehicule()">Ajouter</button>
   </div>
 </app-common-modal>

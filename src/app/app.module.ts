@@ -13,6 +13,7 @@ import {GererVehiculesComponent} from "./admin/gerer-vehicules/gerer-vehicules.c
 import {CreerVehiculeComponent} from "./admin/creer-vehicule/creer-vehicule.component";
 import { ImmatFilterPipe } from './pipes/immat-filter.pipe';
 import { BrandFilterPipe } from './pipes/brand-filter.pipe';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { BrandFilterPipe } from './pipes/brand-filter.pipe';
     FormsModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
+    RouterModule.forRoot([])
   ],
   providers: [
 

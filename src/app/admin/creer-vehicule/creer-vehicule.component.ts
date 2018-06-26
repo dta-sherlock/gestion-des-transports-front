@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, ViewChild, ElementRef} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, ViewChild, ElementRef, Output, EventEmitter} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {
   FormBuilder,
@@ -7,6 +7,8 @@ import {
 } from '@angular/forms';
 import Vehicules, {CarCategory} from "../../models/vehicules/vehicules";
 import {AdminServices} from "../services/admin-services.service";
+import {CommonModalComponent} from '../../modals/common-modal/common-modal.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-creer-vehicule',
@@ -14,6 +16,10 @@ import {AdminServices} from "../services/admin-services.service";
   styleUrls: ['./creer-vehicule.component.css']
 })
 export class CreerVehiculeComponent implements OnInit {
+
+  @Output()
+  vehiculesSubmitted:EventEmitter<Vehicules>= new EventEmitter<Vehicules>();
+
 
   category = CarCategory;
 
@@ -23,8 +29,7 @@ export class CreerVehiculeComponent implements OnInit {
   }
 
   constructor(
-    private fb: FormBuilder, private adminService: AdminServices
-  ) {
+    private fb: FormBuilder, private adminService: AdminServices, private router: Router) {
     this.creationForm = this.fb.group({
       immatriculation: [
         '',
@@ -72,6 +77,9 @@ export class CreerVehiculeComponent implements OnInit {
 
   }
 
+  navigateToList() {
+    this.router.navigate(['']);
+  }
   createVehicule() {
     const newVehicule = new Vehicules(
       this.immatriculation.value,
@@ -81,10 +89,10 @@ export class CreerVehiculeComponent implements OnInit {
       this.placeAvailable.value,
       this.photo.value
     );
-    console.log(newVehicule);
 
-    this.adminService.publishVehicule(newVehicule).subscribe(vehicule => {
-      console.log(vehicule);
-    });
+    this.adminService.publishVehicule(newVehicule).subscribe();
+    this.vehiculesSubmitted.emit();
   }
+
+
 }

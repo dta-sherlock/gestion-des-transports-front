@@ -32,4 +32,8 @@ export class GererVehiculesComponent implements OnInit {
   addVehicule(){
     this.childModal.show();
   }
+  refreshList(){
+    this.childModal.hide();
+    this.adminService.getVehicules().subscribe(liste => (this.listeVehicules = liste));
+  }
 }

@@ -14,11 +14,11 @@ export default class Vehicules {
    photo : string;
 
 
-  constructor(immatriculation: string, brand: string, model : string, carCategory : CarCategory, placeAvailable : number, photo : string) {
+  constructor(immatriculation: string, brand: string, model : string, category : CarCategory, placeAvailable : number, photo : string) {
     this.immatriculation = immatriculation;
     this.brand = brand;
     this.model = model;
-    this.category = carCategory;
+    this.category = category;
     this.placeAvailable = placeAvailable;
     this.photo = photo;
 
