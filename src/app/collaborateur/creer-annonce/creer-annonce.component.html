@@ -8,29 +8,28 @@
       </div>
       <div class="card-body">
         <div class="form-group row">
-          <label for="dep" class="col-sm-3 col-form-label">Adresse de départ</label>
+          <label for="startingAddress" class="col-sm-3 col-form-label">Adresse de départ</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="startAdress" name="origin" [(ngModel)]="origin" (selectItem)="selectedOrigin($event)"
-                   [ngbTypeahead]="search">
+            <input type="text" class="form-control" id="startingAddress" name="origin">
+
           </div>
         </div>
         <div class="form-group row">
-          <label for="arr" class="col-sm-3 col-form-label">Adresse d'arrivée</label>
+          <label for="arrivalAddress" class="col-sm-3 col-form-label">Adresse d'arrivée</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="arr" name="destination" [(ngModel)]="destination" (selectItem)="selectedDestination($event)"
-                   [ngbTypeahead]="search">
+            <input type="text" class="form-control" id="arrivalAddress" name="destination">
           </div>
         </div>
         <div class="form-group row">
-          <label for="duration" class="col-sm-3 col-form-label">Durée du trajet</label>
+          <label for="travelTime" class="col-sm-3 col-form-label">Durée du trajet</label>
           <div class="col-sm-9">
-            <input type="text" readonly class="form-control-plaintext" id="duration" name="duration" [(ngModel)]="duration">
+            <input type="text" readonly class="form-control-plaintext" id="travelTime" name="duration">
           </div>
         </div>
         <div class="form-group row">
           <label for="distance" class="col-sm-3 col-form-label">Distance</label>
           <div class="col-sm-9">
-            <input type="text" readonly class="form-control-plaintext" id="distance" name="distance" [(ngModel)]="distance">
+            <input type="text" readonly class="form-control-plaintext" id="distance" name="distance">
           </div>
         </div>
       </div>
@@ -45,35 +44,35 @@
           'has-danger': immatriculation.invalid && immatriculation.dirty,
           'has-success': immatriculation.valid && immatriculation.dirty
         }">
-          <label for="immat" class="col-sm-3 col-form-label">Immatriculation</label>
+          <label for="immatriculation" class="col-sm-3 col-form-label">Immatriculation</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="immat" formControlName="immatriculation">
+            <input type="text" class="form-control" id="immatriculation" formControlName="immatriculation">
           </div>
         </div>
         <div class="form-group row">
-          <label for="marque" class="col-sm-3 col-form-label">Marque</label>
+          <label for="brand" class="col-sm-3 col-form-label">Marque</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="marque" formControlName="marque">
-            <div class=" invalid-tooltip" *ngIf="marque.errors && (marque.dirty || marque.touched)">
+            <input type="text" class="form-control" id="brand" formControlName="brand">
+            <div class=" invalid-tooltip" *ngIf="brand.errors && (brand.dirty || brand.touched)">
               La marque est obligatoire.
             </div>
           </div>
         </div>
         <div class="form-group row">
-          <label for="modele" class="col-sm-3 col-form-label">Modèle</label>
+          <label for="model" class="col-sm-3 col-form-label">Modèle</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="modele" formControlName="modele">
-            <div class="invalid-tooltip" *ngIf="modele.errors && (modele.dirty || modele.touched)">
+            <input type="text" class="form-control" id="model" formControlName="model">
+            <div class="invalid-tooltip" *ngIf="model.errors && (model.dirty || model.touched)">
               Le modèle est obligatoire.
             </div>
           </div>
         </div>
         <div class="form-group row">
-          <label for="dispo" class="col-sm-3 col-form-label">Places disponibles</label>
+          <label for="placesAvailable" class="col-sm-3 col-form-label">Places disponibles</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="dispo" formControlName="nbPlaces">
-            <div class="invalid-tooltip" *ngIf="nbPlaces.errors && (nbPlaces.dirty || nbPlaces.touched)">
-              Le nombre de places doit être compris entre 1 et 20.
+            <input type="text" class="form-control" id="placesAvailable" formControlName="placesAvailable">
+            <div class="invalid-tooltip" *ngIf="placesAvailable.errors && (placesAvailable.dirty || placesAvailable.touched)">
+              Le nombre de places doit être compris entre 1 et 20
             </div>
           </div>
         </div>
@@ -81,20 +80,20 @@
     </div>
     <div class="card" [formGroup]="dateTimeForm">
       <div class="card-header">
-        Date et heure
+        Date et horaire
       </div>
       <div class="card-body">
         <div class="form-group row">
           <label for="date" class="col-sm-2 col-form-label align-self-center">Date</label>
           <div class="col-sm-4 align-self-center">
-            <input id="date" required class="form-control" (click)="d.toggle()" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker"
+            <input id="date" required class="form-control"  placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker"
                    formControlName="date">
           </div>
-          <label for="heure" class="col-sm-2 col-form-label align-self-center">Heure</label>
+          <label for="hour" class="col-sm-2 col-form-label align-self-center">Heure</label>
           <div class="col-sm-4 align-self-center">
-            <ngb-timepicker required id="heure" [minuteStep]="10" formControlName="heure"></ngb-timepicker>
+            <ngb-timepicker required id="hour" formControlName="hour" [minuteStep]="10"></ngb-timepicker>
           </div>
-          <div class="invalid-tooltip" *ngIf="(date.errors || heure.errors) && (heure.dirty || heure.touched || date.dirty || date.touched)">
+          <div class="invalid-tooltip" *ngIf="(date.errors || hour.errors) && (hour.dirty || hour.touched || date.dirty || date.touched)">
             La date et l'heure sont obligatoires.
           </div>
           <div class="invalid-tooltip" *ngIf="dateTimeForm.hasError('anterior')">
@@ -112,6 +111,3 @@
   </form>
 </div>
 
-<ng-template #actionConfirm>
-  <button type="submit" class="btn btn-primary" (click)="publish()">Publier</button>
-</ng-template>
