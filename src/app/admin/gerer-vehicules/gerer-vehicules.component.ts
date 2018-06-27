@@ -1,5 +1,5 @@
 import {Component, OnInit,  ViewChild, ViewContainerRef} from '@angular/core';
-import Vehicules, {CarCategory} from "../../models/vehicules/vehicules";
+import CompanyCar from "../../models/vehicules/CompanyCar";
 import {CreerVehiculeComponent} from "../creer-vehicule/creer-vehicule.component";
 import {AdminServices} from "../services/admin-services.service";
 import {CommonModalComponent} from "../../modals/common-modal/common-modal.component";
@@ -14,16 +14,16 @@ import {CommonModalComponent} from "../../modals/common-modal/common-modal.compo
 })
 export class GererVehiculesComponent implements OnInit {
 
-  immatFilter : string = '';
+  immatFilter: string = '';
 
-  brandFilter : string = '';
+  brandFilter: string = '';
 
-  listeVehicules : Array<Vehicules>;
+  listeVehicules: Array<CompanyCar>;
 
   @ViewChild('childModal') childModal: CommonModalComponent;
-  @ViewChild(CreerVehiculeComponent) creerComponent:CreerVehiculeComponent;
+  @ViewChild(CreerVehiculeComponent) creerComponent: CreerVehiculeComponent;
 
-  constructor(private adminService : AdminServices) { }
+  constructor(private adminService: AdminServices) { }
 
   ngOnInit() {
       this.adminService.getVehicules().subscribe(liste => (this.listeVehicules = liste));

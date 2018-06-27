@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 import { AppComponent } from './app.component';
-import { AuthentificationComponent } from './authentification/authentification.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 import { OptionProfilComponent } from './modals/option-profil/option-profil.component';
@@ -19,7 +19,6 @@ import {RouterModule} from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
-    AuthentificationComponent,
     OptionProfilComponent,
     CommonModalComponent,
     GererVehiculesComponent,
@@ -33,11 +32,11 @@ import {RouterModule} from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
-    RouterModule.forRoot([])
+    RouterModule.forRoot([]),
+    NgbModule
   ],
   providers: [
-
-    HttpClient
+    HttpClient,
   ],
   bootstrap: [AppComponent]
 })

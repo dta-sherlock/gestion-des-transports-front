@@ -41,10 +41,10 @@
       </div>
     </div>
     <div class="form-group row">
-      <label for="placeAvailable" class="col-sm-3 col-form-label">Nombre de places</label>
+      <label for="availableSeats" class="col-sm-3 col-form-label">Nombre de places</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="placeAvailable" name="placeAvailable" formControlName="placeAvailable">
-        <div class="invalid-tooltip"  [class.invalidClass]="placeAvailable.errors && (placeAvailable.dirty || placeAvailable.touched)">
+        <input type="text" class="form-control" id="availableSeats" name="availableSeats" formControlName="availableSeats">
+        <div class="invalid-tooltip"  [class.invalidClass]="availableSeats.errors && (availableSeats.dirty || availableSeats.touched)">
           Le nombre de places est obligatoire
         </div>
       </div>

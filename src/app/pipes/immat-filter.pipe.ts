@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import Vehicules from "../models/vehicules/vehicules";
+import CompanyCar from "../models/vehicules/CompanyCar";
 
 @Pipe({
   name: 'FilterByImmat'
 })
 export class ImmatFilterPipe implements PipeTransform {
 
-  transform(value: Array<Vehicules>, immatFilter: string): Array<Vehicules> {
+  transform(value: Array<CompanyCar>, immatFilter: string): Array<CompanyCar> {
     if (immatFilter) {
       return value.filter(vehicule => vehicule.immatriculation.toLowerCase().startsWith(immatFilter.toLowerCase()));
     } else {

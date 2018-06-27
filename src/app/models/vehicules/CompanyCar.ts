@@ -5,21 +5,21 @@
   BerlinesTailleL="Berlines Taille L", SUV="SUV", ToutTerrains="Tout Terrains", PickUp="Pick Up"
 }
 
-export default class Vehicules {
+export default class CompanyCar {
    immatriculation: string;
-   brand : string;
-   model : string;
-   category : CarCategory;
-   placeAvailable : number;
-   photo : string;
+   brand: string;
+   model: string;
+   category: CarCategory;
+   availableSeats: number;
+   photo: string;
 
 
-  constructor(immatriculation: string, brand: string, model : string, category : CarCategory, placeAvailable : number, photo : string) {
+  constructor(immatriculation: string, brand: string, model: string, category: CarCategory, availableSeats: number, photo: string) {
     this.immatriculation = immatriculation;
     this.brand = brand;
     this.model = model;
     this.category = category;
-    this.placeAvailable = placeAvailable;
+    this.availableSeats = availableSeats;
     this.photo = photo;
 
   }

@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
-import Vehicules, {CarCategory} from "../../models/vehicules/vehicules";
+import CompanyCar, {CarCategory} from "../../models/vehicules/CompanyCar";
 import {AdminServices} from "../services/admin-services.service";
 import {CommonModalComponent} from '../../modals/common-modal/common-modal.component';
 import {Router} from '@angular/router';
@@ -17,8 +17,11 @@ import {Router} from '@angular/router';
 })
 export class CreerVehiculeComponent implements OnInit {
 
+  creationForm: FormGroup;
+
+
   @Output()
-  vehiculesSubmitted:EventEmitter<Vehicules>= new EventEmitter<Vehicules>();
+  vehiculesSubmitted: EventEmitter<CompanyCar>= new EventEmitter<CompanyCar>();
 
 
   category = CarCategory;
@@ -41,13 +44,12 @@ export class CreerVehiculeComponent implements OnInit {
       brand: ['', Validators.required],
       model: ['', Validators.required],
       carCategory: ['', Validators.required],
-      placeAvailable: ['', Validators.required],
+      availableSeats: ['', Validators.required],
       photo: ['', Validators.required]
     });
   }
 
 
-  creationForm: FormGroup;
 
   get immatriculation() {
     return this.creationForm.get('immatriculation');
@@ -65,8 +67,8 @@ export class CreerVehiculeComponent implements OnInit {
     return this.creationForm.get('carCategory');
   }
 
-  get placeAvailable() {
-    return this.creationForm.get('placeAvailable');
+  get availableSeats() {
+    return this.creationForm.get('availableSeats');
   }
 
   get photo() {
@@ -81,12 +83,12 @@ export class CreerVehiculeComponent implements OnInit {
     this.router.navigate(['']);
   }
   createVehicule() {
-    const newVehicule = new Vehicules(
+    const newVehicule = new CompanyCar(
       this.immatriculation.value,
       this.brand.value,
       this.model.value,
       this.carCategory.value,
-      this.placeAvailable.value,
+      this.availableSeats.value,
       this.photo.value
     );
 
