@@ -23,7 +23,7 @@
         <div class="form-group row">
           <label for="travelTime" class="col-sm-3 col-form-label">Durée du trajet</label>
           <div class="col-sm-9">
-            <input type="text" readonly class="form-control-plaintext" id="travelTime" name="duration">
+            <input type="text" readonly class="form-control-plaintext" id="travelTime" name="travelTime">
           </div>
         </div>
         <div class="form-group row">
@@ -68,10 +68,10 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="placesAvailable" class="col-sm-3 col-form-label">Places disponibles</label>
+          <label for="availableSeats" class="col-sm-3 col-form-label">Places disponibles</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="placesAvailable" formControlName="placesAvailable">
-            <div class="invalid-tooltip" *ngIf="placesAvailable.errors && (placesAvailable.dirty || placesAvailable.touched)">
+            <input type="text" class="form-control" id="availableSeats" formControlName="availableSeats">
+            <div class="invalid-tooltip" *ngIf="availableSeats.errors && (availableSeats.dirty || availableSeats.touched)">
               Le nombre de places doit être compris entre 1 et 20
             </div>
           </div>
@@ -87,11 +87,17 @@
           <label for="date" class="col-sm-2 col-form-label align-self-center">Date</label>
           <div class="col-sm-4 align-self-center">
             <input id="date" required class="form-control"  placeholder="yyyy-mm-dd" name="dp"
-                   formControlName="date">
+                   formControlName="date" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+              </button>
+            </div>
           </div>
           <label for="hour" class="col-sm-2 col-form-label align-self-center">Heure</label>
           <div class="col-sm-4 align-self-center">
-          </div>
+            <ngb-timepicker required id="hour" [minuteStep]="10" formControlName="hour"></ngb-timepicker>
+
           <div class="invalid-tooltip" *ngIf="(date.errors || hour.errors) && (hour.dirty || hour.touched || date.dirty || date.touched)">
             La date et l'heure sont obligatoires.
           </div>
@@ -101,12 +107,11 @@
         </div>
       </div>
     </div>
-
+    </div>
     <div class="card-footer text-center">
       <button [disabled]="!validItineraire || dateTimeForm.invalid || vehiculeForm.invalid" class="btn
-              btn-primary" (click)="confirmAnnonce()">Publier</button>
+              btn-primary">Publier</button>
     </div>
-
   </form>
 </div>
 

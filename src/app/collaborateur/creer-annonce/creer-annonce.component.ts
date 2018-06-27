@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import CarpoolCar from '../../models/annonces/CarpoolCar';
+import Car from '../../models/annonces/Car';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Annonce} from '../../models/annonces/Annonce';
+import {CarpoolBooking} from '../../models/annonces/CarpoolBooking';
 
 @Component({
   selector: 'app-creer-annonce',
@@ -10,10 +10,9 @@ import {Annonce} from '../../models/annonces/Annonce';
 })
 export class CreerAnnonceComponent implements OnInit {
 
-  carpoolCar: CarpoolCar;
+  carpoolCar: Car;
   vehiculeForm: FormGroup;
   dateTimeForm: FormGroup;
-  annonce: Annonce;
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -31,8 +30,8 @@ export class CreerAnnonceComponent implements OnInit {
   get model() {
     return this.vehiculeForm.get('model');
   }
-  get placesAvailable() {
-    return this.vehiculeForm.get('placesAvailable');
+  get availableSeats() {
+    return this.vehiculeForm.get('availableSeats');
   }
 
   get hour() {
@@ -42,12 +41,14 @@ export class CreerAnnonceComponent implements OnInit {
   get date() {
     return this.dateTimeForm.get('date');
   }
+
+
   createForms() {
     this.vehiculeForm = this.formBuilder.group({
       immatriculation: [''],
       brand: ['', Validators.required],
       model: ['', Validators.required],
-      placesAvailable: [
+      availableSeats: [
         '',
         [
           Validators.required,
@@ -79,15 +80,20 @@ export class CreerAnnonceComponent implements OnInit {
       dateTime.date.year,
       dateTime.date.month,
       dateTime.date.day,
-      dateTime.heure.hour,
-      dateTime.heure.minute
+      dateTime.hour.hour,
+      dateTime.hour.minute
     );
   }
 
-  createAnnonce(){
-    const newAnnonce = new Annonce(
+   createCarpoolBooking(){
+    const newBooking = new CarpoolBooking(
       this.immatriculation.value,
-      this
+      this.brand.value,
+      this.model.value,
+      this.availableSeats.value,
+      this.hour.value,
+      this.date.value,
+      this.carpoolCar.immatriculation.value,
     )
   }
 }

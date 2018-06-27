@@ -1,12 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
-
 import { AppComponent } from './app.component';
 import { CreerAnnonceComponent } from './collaborateur/creer-annonce/creer-annonce.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgModule} from '@angular/core';
 
 
 @NgModule({
@@ -18,10 +16,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule.forRoot(),
   ],
   providers: [
-    NgbModule
+    HttpClient
   ],
   bootstrap: [AppComponent]
 })

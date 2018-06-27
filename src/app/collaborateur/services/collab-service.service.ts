@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Annonce} from '../../models/annonces/Annonce';
+import {CarpoolBooking} from '../../models/annonces/CarpoolBooking';
 
 const API_BASE_URL = 'http://localhost:8080/';
 const URL_ANNONCES = 'collaborateur/annonces/';
@@ -13,8 +13,7 @@ export class CollabServiceService {
 
   constructor(private http: HttpClient) { }
 
-  createAnnonce(annonce: Annonce){
-    return this.http.post<Array<Annonce>>(`${API_BASE_URL}${URL_ANNONCES}${CREER}`, annonce);
-
+  createCarpoolBooking(carpoolBooking: CarpoolBooking){
+    return this.http.post<Array<CarpoolBooking>>(`${API_BASE_URL}${URL_ANNONCES}${CREER}`, carpoolBooking);
   }
 }
