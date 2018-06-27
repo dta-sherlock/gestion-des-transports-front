@@ -7,18 +7,14 @@ export class CarpoolBooking extends Booking {
   private _arrivalAddress: string ;
   private _availableSeats: number ;
   private _car: Car;
-  private _user: User;
   private _passengers: Array<User>;
-
-
-  constructor(id: number, startDate: LocaleData, endDate: LocaleData,
-              startingAddress: string, arrivalAddress: string, availableSeats: number, car: Car, user: User, passengers: Array<User>) {
-    super(id, startDate, endDate);
+ constructor(id: number, startDate: Date, endDate: Date, user: User,
+             startingAddress: string, arrivalAddress: string, availableSeats: number, car: Car, passengers: Array<User>) {
+    super(id, startDate, endDate, user);
     this._startingAddress = startingAddress;
     this._arrivalAddress = arrivalAddress;
     this._availableSeats = availableSeats;
     this._car = car;
-    this._user = user;
     this._passengers = passengers;
   }
 
@@ -52,14 +48,6 @@ export class CarpoolBooking extends Booking {
 
   set car(value: Car) {
     this._car = value;
-  }
-
-  get user(): User {
-    return this._user;
-  }
-
-  set user(value: User) {
-    this._user = value;
   }
 
   get passengers(): Array<User> {
