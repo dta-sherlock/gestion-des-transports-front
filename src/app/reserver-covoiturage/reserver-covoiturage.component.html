@@ -3,14 +3,11 @@
 <h1>Réserver un véhicule</h1>
 
 
+
+<script src="autocomplete.js"></script>
+
+
 <input type="search" id="address" class="form-control" placeholder="Where are we going?" />
-
-
-<div id="input-styling-address">
-  <input type="search" placeholder="Where are we going?" />
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/places.js@1.7.3"></script>
 
 
 <div class="container">
@@ -44,13 +41,6 @@
             </div>
             <div class='col-sm-2'>
                 <input id="searchInput" class="form-control" type="text">
-              <script>
-                var places = require('places.js');
-                var placesAutocomplete = places({
-                  container: document.querySelector('#searchInput')
-                });
-              </script>
-
             </div>
             <div class='col-sm-2'>
 
@@ -154,6 +144,15 @@
 <!-- Accordion card -->
 
 </div>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-</script>
+
+
+<app-common-modal #childModal [title]="'Choisissez votre profil'">
+  <div class="modal-body">
+    <div class="row">
+      <app-option-confirmation></app-option-confirmation>
+    </div>
+  </div>
+  <div class=" modal-footer ">
+
+  </div>
+</app-common-modal>
