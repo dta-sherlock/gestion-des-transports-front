@@ -86,12 +86,11 @@
         <div class="form-group row">
           <label for="date" class="col-sm-2 col-form-label align-self-center">Date</label>
           <div class="col-sm-4 align-self-center">
-            <input id="date" required class="form-control"  placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker"
+            <input id="date" required class="form-control"  placeholder="yyyy-mm-dd" name="dp"
                    formControlName="date">
           </div>
           <label for="hour" class="col-sm-2 col-form-label align-self-center">Heure</label>
           <div class="col-sm-4 align-self-center">
-            <ngb-timepicker required id="hour" formControlName="hour" [minuteStep]="10"></ngb-timepicker>
           </div>
           <div class="invalid-tooltip" *ngIf="(date.errors || hour.errors) && (hour.dirty || hour.touched || date.dirty || date.touched)">
             La date et l'heure sont obligatoires.

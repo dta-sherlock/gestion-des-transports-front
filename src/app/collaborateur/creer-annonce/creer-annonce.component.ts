@@ -83,4 +83,11 @@ export class CreerAnnonceComponent implements OnInit {
       dateTime.heure.minute
     );
   }
+
+  createAnnonce(){
+    const newAnnonce = new Annonce(
+      this.immatriculation.value,
+      this
+    )
+  }
 }
