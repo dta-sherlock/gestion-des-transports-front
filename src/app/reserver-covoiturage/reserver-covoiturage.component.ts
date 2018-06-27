@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
-import {CommonModalComponent} from '../common-modal/common-modal.component';
+import {CarpoolBooking} from '../models/CarpoolBooking';
+import {BookingApiService} from '../ServicesApi/booking-api.service';
 
 
 @Component({
@@ -9,13 +10,14 @@ import {CommonModalComponent} from '../common-modal/common-modal.component';
 })
 export class ReserverCovoiturageComponent implements OnInit {
 
-  @ViewChild('childModal') childModal: CommonModalComponent;
-  constructor(private viewContainerRef: ViewContainerRef) {
+  listCovoiturage: Array<CarpoolBooking>
+
+  constructor(private booking: BookingApiService ) {
 
   }
 
   ngOnInit() {
-    this.childModal.show();
+    this.booking.getReservation().subscribe(value => this.listCovoiturage = value);
   }
 
 }

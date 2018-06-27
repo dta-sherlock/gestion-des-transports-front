@@ -4,7 +4,6 @@
 
 
 
-<script src="autocomplete.js"></script>
 
 
 <input type="search" id="address" class="form-control" placeholder="Where are we going?" />
@@ -81,14 +80,14 @@
               <th>Place Disponible</th>
               <th></th>
             </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+            <tr *ngFor="let booking of listCovoiturage" >
+              <td>{{booking.startDate}}</td>
+              <td>{{booking.startingAddress}}</td>
+              <td>{{booking.arrivalAddress}}</td>
+              <td>{{booking.car.ennonceVehicule()}}</td>
+              <td>{{booking.user.firstName}} {{booking.user.lastName.toUpperCase()}}</td>
+              <td>{{booking.availableSeats}}</td>
+              <td><app-modal-confirmation [obj]="booking"></app-modal-confirmation></td>
             </tr>
           </table>
       </div>
@@ -146,13 +145,4 @@
 </div>
 
 
-<app-common-modal #childModal [title]="'Choisissez votre profil'">
-  <div class="modal-body">
-    <div class="row">
-      <app-option-confirmation></app-option-confirmation>
-    </div>
-  </div>
-  <div class=" modal-footer ">
 
-  </div>
-</app-common-modal>
