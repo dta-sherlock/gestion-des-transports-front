@@ -1,0 +1,15 @@
+<div id="modal" bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">{{title}}</h4>
+        <ng-content select=".modal-close-button"></ng-content>
+      </div>
+
+      <ng-content select=".modal-body"></ng-content>
+      <ng-content select=".modal-footer"></ng-content>
+
+    </div>
+  </div>
+</div>

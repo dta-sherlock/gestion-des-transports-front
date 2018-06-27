@@ -1,0 +1,54 @@
+<div class="container-fluid p-5">
+
+  <div class="row">
+    <div class="col">
+      <h1>Véhicules</h1>
+    </div>
+
+  </div>
+
+  <h4>Filtre</h4>
+  <div>
+    <div class="form-group row">
+      <label for="immatFilter" class="col-sm-2 col-form-label">Immatriculation</label>
+      <div class="col-sm-2">
+        <input [(ngModel)]="immatFilter" type="text" class="form-control" id="immatFilter" placeholder="Entrez une immatriculation">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="brandFilter" class="col-sm-2 col-form-label">Marque</label>
+      <div class="col-sm-2">
+        <input [(ngModel)]="brandFilter" type="text" class="form-control" id="brandFilter"  placeholder="Entrez une marque">
+      </div>
+      <div class="col">
+        <a class="btn btn-primary" id="boutonAjout" (click)="addVehicule()">Ajouter un véhicule</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="card" style="width: 10rem; margin: 5px" *ngFor="let vehicule of (listeVehicules |  FilterByImmat : immatFilter | FilterByBrand: brandFilter)">
+        <a>
+          <img class="card-img-top" src="{{vehicule.photo}}">
+        </a>
+
+        <div class="card-body" style="text-align:center">
+          <p>{{vehicule.immatriculation}}
+          <br> {{vehicule.brand}} {{vehicule.model}}
+          <br> {{vehicule.category}}</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<app-common-modal #childModal [title]="'Ajouter un véhicule'" >
+  <div class="modal-body">
+    <app-creer-vehicule (vehiculesSubmitted)="refreshList()"></app-creer-vehicule>
+  </div>
+  <div class=" modal-footer ">
+    <button type="button" class="btn btn-secondary" (click)="this.childModal.hide()">Annuler</button>
+    <button class="btn btn-primary" [disabled]="creerComponent.creationForm.invalid" (click)="creerComponent.createVehicule()">Ajouter</button>
+  </div>
+</app-common-modal>
