@@ -11,7 +11,7 @@ export class StartingAddressFilterPipe implements PipeTransform {
       return value.filter(carpoolBooking => carpoolBooking.startingAddress.toLowerCase()
         .startsWith(startingAddressfilter.toLowerCase()));
     } else {
-      return null;
+      return value;
     }
   }
 

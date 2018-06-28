@@ -9,7 +9,9 @@ import {BookingApiService} from '../ServicesApi/booking-api.service';
 })
 export class ReserverCovoiturageComponent implements OnInit {
 
-  listCovoiturage: Array<CarpoolBooking>
+  listCovoiturage: Array<CarpoolBooking>;
+  startingAddressFilter = '';
+  arrivalAddressFilter = '';
 
   constructor(private booking: BookingApiService ) {
 
