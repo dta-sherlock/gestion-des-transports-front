@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import Car from '../models/Car';
-import {CarpoolBooking} from '../models/CarpoolBooking';
-import {Observable} from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
+import { CarpoolBooking } from '../models/CarpoolBooking';
 
 const API_BASE_URL = 'http://localhost:8080/';
-const URL_RESERVATION = 'carpoolBookings';
+const URL_RESERVATION = 'carpoolBookings/';
+const URL_ADD_USER_TO_BOOKING = 'addUserToBooking';
 
 
 @Injectable({
@@ -24,8 +23,8 @@ export class BookingApiService {
     return this.http.get<Array<CarpoolBooking>>(`${API_BASE_URL}${URL_RESERVATION}`);
   }
 
-  reserverCovoiturage(iduser: number , idReservation: number ): Observable<any> {
-    return this.http.post(`${API_BASE_URL}${URL_RESERVATION}` , {iduser, idReservation});
+  reserverCovoiturage(iduser: number , idReservation: number ) {
+    return this.http.post<Array<number>>(`${API_BASE_URL}${URL_RESERVATION}${URL_ADD_USER_TO_BOOKING}`, [iduser, idReservation]);
   }
 
 }

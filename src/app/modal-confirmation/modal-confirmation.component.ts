@@ -19,6 +19,7 @@ export class ModalConfirmationComponent implements OnInit {
   }
 
   reservation() {
+    // TODO change iduser from 1 to the actual id of the current logged user when authentication fully works in front application
     this.api.reserverCovoiturage(1, this.obj.id).subscribe();
   }
 
