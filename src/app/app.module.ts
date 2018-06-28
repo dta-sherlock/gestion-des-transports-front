@@ -14,6 +14,7 @@ import {CreerVehiculeComponent} from "./admin/creer-vehicule/creer-vehicule.comp
 import { ImmatFilterPipe } from './pipes/immat-filter.pipe';
 import { BrandFilterPipe } from './pipes/brand-filter.pipe';
 import {RouterModule} from '@angular/router';
+import {AdminServices} from './admin/services/admin-services.service';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {RouterModule} from '@angular/router';
   ],
   providers: [
     HttpClient,
+    AdminServices
   ],
   bootstrap: [AppComponent]
 })

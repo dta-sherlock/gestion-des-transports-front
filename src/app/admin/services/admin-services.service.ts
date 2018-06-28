@@ -6,9 +6,7 @@ const API_BASE_URL: string = 'http://localhost:8080/';
 const URL_VEHICULES: string = 'admin/vehicules/';
 const CREER: string = 'creer/'
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AdminServices {
 
   constructor(private http : HttpClient) {
