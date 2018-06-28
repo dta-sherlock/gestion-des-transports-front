@@ -8,8 +8,9 @@ export class CarpoolBooking extends Booking {
   private _availableSeats: number ;
   private _car: Car;
   private _passengers: Array<User>;
- constructor(id: number, startDate: Date, endDate: Date, user: User,
-             startingAddress: string, arrivalAddress: string, availableSeats: number, car: Car, passengers: Array<User>) {
+
+
+  constructor(id: number, startDate: string, endDate: Date, user: User, startingAddress: string, arrivalAddress: string, availableSeats: number, car: Car, passengers: Array<User>) {
     super(id, startDate, endDate, user);
     this._startingAddress = startingAddress;
     this._arrivalAddress = arrivalAddress;

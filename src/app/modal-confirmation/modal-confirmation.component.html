@@ -1,17 +1,23 @@
-<button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
+<button type="button" class="btn btn-primary" (click)="openModal(template)">Réserver</button>
 
 <ng-template #template>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Modal</h4>
+    <h4 class="modal-title pull-left">Confirmation</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <p>Départ  {{obj.startingAddress}}<br>
-       Destination  {{obj.arrivalAddress}}<br>
-       Date/Heure   {{obj.startDate}}<br>
-      Vehicule   {{obj.car}} <br>
-    Chauffeur    {{obj.user}}</p>
+    <h5>Départ :</h5><p>{{obj.startingAddress}}</p>
+    <h5>Destination :</h5> <p>{{obj.arrivalAddress}}</p>
+    <h5>Date/Heure :</h5> <p>{{obj.startDate}}</p>
+    <h5>Vehicule :</h5><p>{{obj.car.brand}} {{obj.car.model}}</p>
+    <h5>Chauffeur :</h5><p>{{obj.creator.firstName}} {{obj.creator.lastName}}</p>
+    <button type="button" class="btn"  (click)="modalRef.hide()">
+      ANNULE
+    </button>
+    <button type="button" class="btn"  (click)="modalRef.hide();reservation()">
+      CONFIMER
+    </button>
   </div>
 </ng-template>

@@ -84,8 +84,8 @@
               <td>{{booking.startDate}}</td>
               <td>{{booking.startingAddress}}</td>
               <td>{{booking.arrivalAddress}}</td>
-              <td>{{booking.car.ennonceVehicule()}}</td>
-              <td>{{booking.user.firstName}} {{booking.user.lastName.toUpperCase()}}</td>
+              <td>{{booking.car.brand}} {{booking.car.model}} </td>
+              <td>{{booking.creator.firstName}} {{booking.creator.lastName.toUpperCase()}}</td>
               <td>{{booking.availableSeats}}</td>
               <td><app-modal-confirmation [obj]="booking"></app-modal-confirmation></td>
             </tr>

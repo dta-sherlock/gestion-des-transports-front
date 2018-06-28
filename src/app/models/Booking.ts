@@ -2,16 +2,16 @@ import {LocaleData} from 'ngx-bootstrap';
 
 export class Booking {
   private _id: number ;
-  private _startDate: Date ;
+  private _startDate: string ;
   private _endDate: Date ;
-  private _user: User;
+  private _creator: User;
 
 
-  constructor(id: number, startDate: Date, endDate: Date, user: User) {
+  constructor(id: number, startDate: string, endDate: Date, creator: User) {
     this._id = id;
     this._startDate = startDate;
     this._endDate = endDate;
-    this._user = user;
+    this._creator = creator;
   }
 
   get id(): number {
@@ -22,11 +22,11 @@ export class Booking {
     this._id = value;
   }
 
-  get startDate(): Date {
+  get startDate(): string {
     return this._startDate;
   }
 
-  set startDate(value: Date) {
+  set startDate(value: string) {
     this._startDate = value;
   }
 
@@ -38,11 +38,11 @@ export class Booking {
     this._endDate = value;
   }
 
-  get user(): User {
-    return this._user;
+  get creator(): User {
+    return this._creator;
   }
 
-  set user(value: User) {
-    this._user = value;
+  set creator(value: User) {
+    this._creator = value;
   }
 }
