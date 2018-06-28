@@ -111,6 +111,7 @@ export class CreerAnnonceComponent implements OnInit {
   createCarpoolBooking() {
     const newCar = new Car(this.immatriculation.value, this.brand.value, this.model.value, this.availableSeats.value);
 
+    console.log(this.startingAddress.value);
     this.carpoolBooking = new CarpoolBooking(null, this.date.value, null, this.startingAddress.value, this.arrivalAddress.value, null,
       newCar, null, null)
 
