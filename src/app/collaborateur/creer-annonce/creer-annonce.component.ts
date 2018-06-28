@@ -67,7 +67,6 @@ export class CreerAnnonceComponent implements OnInit {
       arrivalAddress: ['', Validators.required]
     })
 
-
     this.vehiculeForm = this.formBuilder.group({
       immatriculation: [''],
       brand: ['', Validators.required],
@@ -90,6 +89,7 @@ export class CreerAnnonceComponent implements OnInit {
       { validator: this.dateTimeValidator.bind(this) }
     );
   }
+
   dateTimeValidator(control: AbstractControl): { [key: string]: boolean } {
     if (control.get('date').valid && control.get('hour').valid) {
       const dateTime = this.ngbDateToNative(control.value);
@@ -99,21 +99,24 @@ export class CreerAnnonceComponent implements OnInit {
     }
     return null;
   }
+
+  //Pour le constructeur Date, les mois vont de 0 à 11: une date saisie comme étant le 2018-06-01 ressort avec un mois de plus, d'où le retrait d'un mois dans cette fonction
   ngbDateToNative(dateTime) {
     return new Date(
       dateTime.date.year,
-      dateTime.date.month,
+      dateTime.date.month - 1,
       dateTime.date.day,
       dateTime.hour.hour,
       dateTime.hour.minute
     );
   }
+
   createCarpoolBooking() {
     const newCar = new Car(this.immatriculation.value, this.brand.value, this.model.value, this.availableSeats.value);
 
-    console.log(this.startingAddress.value);
-    this.carpoolBooking = new CarpoolBooking(null, this.date.value, null, this.startingAddress.value, this.arrivalAddress.value, null,
-      newCar, null, null)
+    let startDate = this.ngbDateToNative(this.dateTimeForm.value);
+    this.carpoolBooking = new CarpoolBooking(null, startDate, null, this.startingAddress.value, this.arrivalAddress.value, null,
+      newCar, null, null);
 
     this.collabServ.createCarpoolBooking(this.carpoolBooking).subscribe();
     this.childModal.show();
