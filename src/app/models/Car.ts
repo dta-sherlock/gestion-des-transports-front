@@ -12,8 +12,8 @@ export default class Car {
     this._availableSeats = availableSeats;
   }
 
-  ennonceVehicule(): string {
-    return this.model + '' + this._brand;
+  toString(): string {
+    return this._brand + '' + this._model;
   }
 
   get immatriculation(): string {
