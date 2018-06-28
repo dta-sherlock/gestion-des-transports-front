@@ -5,12 +5,19 @@ import { CreerAnnonceComponent } from './collaborateur/creer-annonce/creer-annon
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
+import { DetailsCovoiturageComponent } from './collaborateur/details-covoiturage/details-covoiturage.component';
+import { CommonModalComponent } from './modals/common-modal/common-modal.component';
+import { ModalModule } from 'ngx-bootstrap';
+import { CollabServiceService } from './collaborateur/services/collab-service.service';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreerAnnonceComponent
+    CreerAnnonceComponent,
+    DetailsCovoiturageComponent,
+    CommonModalComponent
   ],
   imports: [
     BrowserModule,
@@ -18,9 +25,11 @@ import {NgModule} from '@angular/core';
     FormsModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [
-    HttpClient
+    HttpClient, 
+    CollabServiceService
   ],
   bootstrap: [AppComponent]
 })

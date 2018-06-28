@@ -6,9 +6,7 @@ const API_BASE_URL = 'http://localhost:8080/';
 const URL_ANNONCES = 'collaborateur/annonces/';
 const CREER = 'creer/'
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CollabServiceService {
 
   constructor(private http: HttpClient) { }

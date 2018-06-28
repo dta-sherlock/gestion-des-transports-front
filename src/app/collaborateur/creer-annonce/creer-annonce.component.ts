@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+ import { Component, OnInit, ViewChild } from '@angular/core';
 import Car from '../../models/annonces/Car';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CarpoolBooking} from '../../models/annonces/CarpoolBooking';
+import { DetailsCovoiturageComponent } from '../details-covoiturage/details-covoiturage.component';
+import { CommonModalComponent } from '../../modals/common-modal/common-modal.component';
+import { CollabServiceService } from '../services/collab-service.service';
 
 @Component({
   selector: 'app-creer-annonce',
@@ -11,13 +14,29 @@ import {CarpoolBooking} from '../../models/annonces/CarpoolBooking';
 export class CreerAnnonceComponent implements OnInit {
 
   carpoolCar: Car;
+  itineraireForm: FormGroup;
   vehiculeForm: FormGroup;
   dateTimeForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  carpoolBooking : CarpoolBooking = new CarpoolBooking(null,null, null, null, null, null,
+   null, null, null);
+
+
+  @ViewChild('childModal') childModal: CommonModalComponent;
+  @ViewChild(DetailsCovoiturageComponent) detailsCovoiturageComponent: DetailsCovoiturageComponent;
+
+  constructor(private formBuilder: FormBuilder, private collabServ : CollabServiceService) { }
 
   ngOnInit() {
     this.createForms();
+  }
+
+  get startingAddress (){
+    return this.itineraireForm.get('startingAddress')
+  }
+
+  get arrivalAddress (){
+    return this.itineraireForm.get('arrivalAddress')
   }
 
   get immatriculation() {
@@ -44,6 +63,12 @@ export class CreerAnnonceComponent implements OnInit {
 
 
   createForms() {
+    this.itineraireForm = this.formBuilder.group({
+      startingAddress:['', Validators.required],
+      arrivalAddress: ['', Validators.required]
+    })
+
+
     this.vehiculeForm = this.formBuilder.group({
       immatriculation: [''],
       brand: ['', Validators.required],
@@ -84,16 +109,11 @@ export class CreerAnnonceComponent implements OnInit {
       dateTime.hour.minute
     );
   }
-
    createCarpoolBooking(){
-    const newBooking = new CarpoolBooking(
-      this.immatriculation.value,
-      this.brand.value,
-      this.model.value,
-      this.availableSeats.value,
-      this.hour.value,
-      this.date.value,
-      this.carpoolCar.immatriculation.value,
-    )
+     const newCar = new Car(this.immatriculation.value, this.brand.value, this.model.value, this.availableSeats.value);
+    const newBooking = new CarpoolBooking(null, this.date.value, null, this.startingAddress.value, this.arrivalAddress.value, null,
+    newCar, null, null)
+    this.collabServ.createCarpoolBooking(newBooking).subscribe();
+    this.childModal.show();
   }
 }

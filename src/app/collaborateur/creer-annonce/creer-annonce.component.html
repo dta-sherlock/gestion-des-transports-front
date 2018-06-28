@@ -2,7 +2,7 @@
 
   <h1>Publier une annonce</h1>
   <form class="needs-validation" novalidate>
-    <div class="card">
+    <div class="card" [formGroup]="itineraireForm">
       <div class="card-header">
         Itinéraire
       </div>
@@ -11,25 +11,12 @@
           <label for="startingAddress" class="col-sm-3 col-form-label">Adresse de départ</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" id="startingAddress" name="origin">
-
           </div>
         </div>
         <div class="form-group row">
           <label for="arrivalAddress" class="col-sm-3 col-form-label">Adresse d'arrivée</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" id="arrivalAddress" name="destination">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="travelTime" class="col-sm-3 col-form-label">Durée du trajet</label>
-          <div class="col-sm-9">
-            <input type="text" readonly class="form-control-plaintext" id="travelTime" name="travelTime">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="distance" class="col-sm-3 col-form-label">Distance</label>
-          <div class="col-sm-9">
-            <input type="text" readonly class="form-control-plaintext" id="distance" name="distance">
           </div>
         </div>
       </div>
@@ -90,7 +77,7 @@
                    formControlName="date" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-                <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                <img src="./assets/calendar.png" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
               </button>
             </div>
           </div>
@@ -109,9 +96,9 @@
     </div>
     </div>
     <div class="card-footer text-center">
-      <button [disabled]="!validItineraire || dateTimeForm.invalid || vehiculeForm.invalid" class="btn
-              btn-primary">Publier</button>
+      <button class="btn
+              btn-primary" (click)="createCarpoolBooking()" id="publishButton">Publier</button>
     </div>
   </form>
 </div>
-
+<app-details-covoiturage [carpoolBooking]="carpoolBooking"></app-details-covoiturage>
