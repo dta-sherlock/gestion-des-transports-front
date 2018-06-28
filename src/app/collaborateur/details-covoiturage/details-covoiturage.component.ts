@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CarpoolBooking } from '../../models/annonces/CarpoolBooking';
 import { CollabServiceService } from '../services/collab-service.service';
 
@@ -10,16 +10,10 @@ import { CollabServiceService } from '../services/collab-service.service';
 export class DetailsCovoiturageComponent implements OnInit {
 
   @Input()
-  carpoolBooking : CarpoolBooking;
+  carpoolBooking: CarpoolBooking;
 
-  constructor(private collabServ : CollabServiceService) { }
+  constructor() { }
 
   ngOnInit() {
   }
-
-  publishBooking(){
-    this.collabServ.createCarpoolBooking
-  }
-
-
 }

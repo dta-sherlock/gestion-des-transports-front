@@ -101,4 +101,13 @@
     </div>
   </form>
 </div>
-<app-details-covoiturage [carpoolBooking]="carpoolBooking"></app-details-covoiturage>
+
+<app-common-modal #childModal [title]="'Confirmation de votre proposition'">
+    <div class="modal-body text-center">
+        <app-details-covoiturage [carpoolBooking]="carpoolBooking"></app-details-covoiturage>
+    </div>
+    <div class="modal-footer">
+      <button type="submit">Envoyer</button>
+      <button type="button" (click)="this.childModal.hide()">Annuler</button>
+    </div>
+</app-common-modal>

@@ -1,7 +1,7 @@
- import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import Car from '../../models/annonces/Car';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {CarpoolBooking} from '../../models/annonces/CarpoolBooking';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CarpoolBooking } from '../../models/annonces/CarpoolBooking';
 import { DetailsCovoiturageComponent } from '../details-covoiturage/details-covoiturage.component';
 import { CommonModalComponent } from '../../modals/common-modal/common-modal.component';
 import { CollabServiceService } from '../services/collab-service.service';
@@ -18,24 +18,23 @@ export class CreerAnnonceComponent implements OnInit {
   vehiculeForm: FormGroup;
   dateTimeForm: FormGroup;
 
-  carpoolBooking : CarpoolBooking = new CarpoolBooking(null,null, null, null, null, null,
-   null, null, null);
-
+  carpoolBooking: CarpoolBooking;
+  car: Car;
 
   @ViewChild('childModal') childModal: CommonModalComponent;
   @ViewChild(DetailsCovoiturageComponent) detailsCovoiturageComponent: DetailsCovoiturageComponent;
 
-  constructor(private formBuilder: FormBuilder, private collabServ : CollabServiceService) { }
+  constructor(private formBuilder: FormBuilder, private collabServ: CollabServiceService, private viewContainerRef: ViewContainerRef) { }
 
   ngOnInit() {
     this.createForms();
   }
 
-  get startingAddress (){
+  get startingAddress() {
     return this.itineraireForm.get('startingAddress')
   }
 
-  get arrivalAddress (){
+  get arrivalAddress() {
     return this.itineraireForm.get('arrivalAddress')
   }
 
@@ -64,7 +63,7 @@ export class CreerAnnonceComponent implements OnInit {
 
   createForms() {
     this.itineraireForm = this.formBuilder.group({
-      startingAddress:['', Validators.required],
+      startingAddress: ['', Validators.required],
       arrivalAddress: ['', Validators.required]
     })
 
@@ -100,7 +99,7 @@ export class CreerAnnonceComponent implements OnInit {
     }
     return null;
   }
-    ngbDateToNative(dateTime) {
+  ngbDateToNative(dateTime) {
     return new Date(
       dateTime.date.year,
       dateTime.date.month,
@@ -109,11 +108,13 @@ export class CreerAnnonceComponent implements OnInit {
       dateTime.hour.minute
     );
   }
-   createCarpoolBooking(){
-     const newCar = new Car(this.immatriculation.value, this.brand.value, this.model.value, this.availableSeats.value);
-    const newBooking = new CarpoolBooking(null, this.date.value, null, this.startingAddress.value, this.arrivalAddress.value, null,
-    newCar, null, null)
-    this.collabServ.createCarpoolBooking(newBooking).subscribe();
+  createCarpoolBooking() {
+    const newCar = new Car(this.immatriculation.value, this.brand.value, this.model.value, this.availableSeats.value);
+
+    this.carpoolBooking = new CarpoolBooking(null, this.date.value, null, this.startingAddress.value, this.arrivalAddress.value, null,
+      newCar, null, null)
+
+    this.collabServ.createCarpoolBooking(this.carpoolBooking).subscribe();
     this.childModal.show();
   }
 }
