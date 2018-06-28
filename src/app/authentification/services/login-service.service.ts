@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { API_BASE_URL, URL_LOGIN, URL_GET_USER } from '../../constantes/urls';
+
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Cookie':  ''
+  })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +26,20 @@ export class LoginServiceService {
       .set('username', username)
       .set('password', password);
 
-    this.http.post<Response>(`${API_BASE_URL}${URL_LOGIN}`, body).subscribe();
-    return this.http.get(`${API_BASE_URL}${URL_GET_USER}`).toPromise();
+    let headersPost = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    })
+
+
+    this.http.post<Response>(`${API_BASE_URL}${URL_LOGIN}`, body, { observe: 'response', headers: headersPost } ).subscribe(
+      resp => {
+       // httpOptions.headers.set('Cookie',resp.headers.get('Set-Cookie'));
+
+        for (let header of resp.headers.keys()) {
+          console.log("header:"+header);
+        }
+      }
+    );
+    return new Promise(()=>console.log("plus tard"));
   }
 }

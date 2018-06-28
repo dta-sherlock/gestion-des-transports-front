@@ -26,9 +26,9 @@ import { SetContentTypeInterceptorService } from './authentification/interceptor
     ReactiveFormsModule,
     ModalModule.forRoot()
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: SetContentTypeInterceptorService, multi: true }
-  ],
+  // providers: [
+  //   { provide: HTTP_INTERCEPTORS, useClass: SetContentTypeInterceptorService, multi: true }
+  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
