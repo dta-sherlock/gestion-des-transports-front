@@ -9,7 +9,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { OptionProfilComponent } from './modals/option-profil/option-profil.component';
 import { CommonModalComponent } from './modals/common-modal/common-modal.component';
 import { ModalModule } from 'ngx-bootstrap';
-import { SetContentTypeInterceptorService } from './authentification/interceptors/set-content-type-interceptor.service';
+
 
 
 @NgModule({
@@ -26,9 +26,9 @@ import { SetContentTypeInterceptorService } from './authentification/interceptor
     ReactiveFormsModule,
     ModalModule.forRoot()
   ],
-  // providers: [
-  //   { provide: HTTP_INTERCEPTORS, useClass: SetContentTypeInterceptorService, multi: true }
-  // ],
+  providers: [
+     //{ provide: HTTP_INTERCEPTORS, useClass: SetContentTypeInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

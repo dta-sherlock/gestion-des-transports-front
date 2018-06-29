@@ -36,19 +36,21 @@ export class AuthentificationComponent implements OnInit {
   }
 
   handleConnexion() {
-    this.loginService.login(this.userForm.email, this.userForm.password).then(data => console.log(data));
-    /*this.userPromise.then(data => {
-      console.log(data);
-      if (data.userType == "1") {
+    this.loginService.login(this.emailCtrl.value, this.passwordCtrl.value).then(data => {
+      if (data.userType == "DRIVER") {
         this.isDriver = true;
       }
 
-      if (data.userType == "2") {
+      if (data.userType == "ADMIN") {
         this.isDriver = true;
         this.isAdmin = true;
       }
 
       this.childModal.show()
-    });*/
+    });
+  }
+
+  handleLogout() {
+    this.loginService.logout();
   }
 }

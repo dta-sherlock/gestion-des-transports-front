@@ -1,13 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { API_BASE_URL, URL_LOGIN, URL_GET_USER } from '../../constantes/urls';
-
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Cookie':  ''
-  })
-};
+import { API_BASE_URL, URL_LOGIN, URL_GET_USER, URL_LOGOUT } from '../../constantes/urls';
+import { User } from '../../models/user/User';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +14,7 @@ export class LoginServiceService {
     return this.http.options(`${API_BASE_URL}${URL_LOGIN}`);
   }
 
-  login(username: string, password: string): Promise<any> {
+  async login(username: string, password: string): Promise<any> {
 
     const body = new HttpParams()
       .set('username', username)
@@ -31,15 +25,16 @@ export class LoginServiceService {
     })
 
 
-    this.http.post<Response>(`${API_BASE_URL}${URL_LOGIN}`, body, { observe: 'response', headers: headersPost } ).subscribe(
-      resp => {
-       // httpOptions.headers.set('Cookie',resp.headers.get('Set-Cookie'));
+    await this.http.post<Response>(`${API_BASE_URL}${URL_LOGIN}`, body, { headers: headersPost }).subscribe();
 
-        for (let header of resp.headers.keys()) {
-          console.log("header:"+header);
-        }
-      }
-    );
-    return new Promise(()=>console.log("plus tard"));
+    return this.getUser();
+  }
+
+  getUser(): Promise<User> {
+    return this.http.get<User>(`${API_BASE_URL}${URL_GET_USER}`, { withCredentials: true }).toPromise();
+  }
+
+  logout() {
+    this.http.get(`${API_BASE_URL}${URL_LOGIN}${URL_LOGOUT}`, { withCredentials: true }).subscribe();
   }
 }
