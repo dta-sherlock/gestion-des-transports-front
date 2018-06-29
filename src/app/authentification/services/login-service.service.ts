@@ -30,8 +30,8 @@ export class LoginServiceService {
     return this.getUser();
   }
 
-  getUser(): Promise<User> {
-    return this.http.get<User>(`${API_BASE_URL}${URL_GET_USER}`, { withCredentials: true }).toPromise();
+  getUser(): Promise<any> {
+    return this.http.get(`${API_BASE_URL}${URL_GET_USER}`, { withCredentials: true, observe: 'response' }).toPromise();
   }
 
   logout() {

@@ -19,6 +19,7 @@ export class AuthentificationComponent implements OnInit {
   userPromise: Promise<User>;
   isDriver: boolean = false;
   isAdmin: boolean = false;
+  loginError: boolean = false;
 
   @ViewChild('childModal') childModal: CommonModalComponent;
 
@@ -37,6 +38,8 @@ export class AuthentificationComponent implements OnInit {
 
   handleConnexion() {
     this.loginService.login(this.emailCtrl.value, this.passwordCtrl.value).then(data => {
+      this.loginError = false;
+      
       if (data.userType == "DRIVER") {
         this.isDriver = true;
       }
@@ -47,7 +50,7 @@ export class AuthentificationComponent implements OnInit {
       }
 
       this.childModal.show()
-    });
+    }).catch(() => this.loginError = true);
   }
 
   handleLogout() {
