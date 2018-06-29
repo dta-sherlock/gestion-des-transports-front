@@ -21,7 +21,7 @@ export class LoginServiceService {
     // this.http.post<User>(`${API_BASE_URL}${URL_LOGIN}`, user, httpOptions).toPromise();
 
     return new Promise(resolve => {
-       setTimeout(() => resolve(new User(user.email, user.password, "ADMIN")), 1000);
+       setTimeout(() => resolve(new User(user.email, user.password, 'ADMIN')), 1000);
      });
   }
 }

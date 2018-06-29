@@ -4,6 +4,7 @@ import {AuthentificationComponent} from './authentification/authentification.com
 import {CollabAccueilComponent} from './collab-accueil/collab-accueil.component';
 import {ChauffeurAccueilComponent} from './chauffeur-accueil/chauffeur-accueil.component';
 import {AdminAccueilComponent} from './admin-accueil/admin-accueil.component';
+import {GererVehiculesComponent} from './admin/gerer-vehicules/gerer-vehicules.component';
 
 
 export const ROUTES: Routes = [
@@ -11,4 +12,5 @@ export const ROUTES: Routes = [
   { path: 'collaborateur', component: CollabAccueilComponent },
   { path: 'chauffeur', component: ChauffeurAccueilComponent},
   { path: 'admin', component: AdminAccueilComponent},
+  { path: 'admin/vehicules' , component: GererVehiculesComponent}
 ];
