@@ -13,6 +13,9 @@ export class OptionProfilComponent implements OnInit {
   @Input()
   nomImage: string;
 
+  @Input()
+  urlRedirection: string;
+
   constructor() { }
 
   ngOnInit() {

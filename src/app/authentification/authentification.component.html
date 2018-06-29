@@ -1,0 +1,44 @@
+
+<div class="container">
+  <div class="container">
+    <img src="../../assets/images/logo_transport_route.png" class="mx-auto d-block">
+    <h1 class="text-center">GDT</h1>
+    <h3 class="text-center">Gestion du transport</h3>
+  </div>
+
+  <form id="formLogin" (ngSubmit)="handleConnexion()" [formGroup]="formConnexion">
+    <div class="form-group row">
+      <label for="login" class="col-3 text-right">Email</label>
+      <input type="text" id="inputLogin" [formControl]="emailCtrl" [(ngModel)]="userForm.email" class="col-9" placeholder="Nom d'utilisateur"
+             required>
+    </div>
+
+    <div class="form-group row">
+      <label for="password" class="col-3 text-right">Mot de passe</label>
+      <input type="password" id="inputPassword" [formControl]="passwordCtrl" [(ngModel)]="userForm.password" class="col-9" placeholder="Mot de passe"
+             required>
+    </div>
+
+    <div class="form-group row">
+      <button type="submit" id="btnLoginSubmit" [disabled]="formConnexion.invalid" class="btn btn-success ml-auto">Se connecter</button>
+    </div>
+
+    <div class="invalid-feedback">
+      Vos informations d'authentification sont invalides
+    </div>
+  </form>
+</div>
+
+<!--Modal-->
+<app-common-modal #childModal [title]="'Choisissez votre profil'">
+  <div class="modal-body">
+    <div class="row">
+      <app-option-profil id="collabModal" [nomImage]="'collab.png'" [type]="'Collaborateur'" [urlRedirection]="'collaborateur'" class="col-4"></app-option-profil>
+      <app-option-profil id="chauffeurModal" [nomImage]="'chauffeur.png'" [type]="'Chauffeur'" [urlRedirection]="'chauffeur'" class="col-4" *ngIf="isDriver"></app-option-profil>
+      <app-option-profil id="adminModal" [nomImage]="'admin.png'" [type]="'Administrateur'" [urlRedirection]="'admin'" class="col-4" *ngIf="isAdmin"></app-option-profil>
+    </div>
+  </div>
+  <div class=" modal-footer ">
+
+  </div>
+</app-common-modal>
